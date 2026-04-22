@@ -1,127 +1,108 @@
-#Requires -Version 5.1
-<#
-.SYNOPSIS
-    Claude Ads Installer for Windows
-.DESCRIPTION
-    Installs the Claude Ads skill, sub-skills, agents, and reference files
-    for Claude Code on Windows systems.
-#>
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
 
-$ErrorActionPreference = "Stop"
+param(
+  [Parameter(ValueFromRemainingArguments = $true)]
+  [string[]]$BootstrapArgs
+)
 
-function Main {
-    $SkillDir = Join-Path $env:USERPROFILE ".claude\skills\ads"
-    $AgentDir = Join-Path $env:USERPROFILE ".claude\agents"
-    $RepoUrl = "https://github.com/AgriciDaniel/claude-ads"
+$RepoUrl = 'https://github.com/Hainrixz/tododeia-animaciones.git'
+$TargetDir = Join-Path (Get-Location).Path 'tododeia-animaciones'
 
-    Write-Host "=================================="
-    Write-Host "   Claude Ads - Installer"
-    Write-Host "   Claude Code Paid Ads Skill"
-    Write-Host "=================================="
-    Write-Host ""
-
-    # Check prerequisites
-    if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
-        Write-Host "X Git is required but not installed." -ForegroundColor Red
-        exit 1
-    }
-    Write-Host "OK Git detected" -ForegroundColor Green
-
-    # Create directories
-    New-Item -ItemType Directory -Path (Join-Path $SkillDir "references") -Force | Out-Null
-    New-Item -ItemType Directory -Path $AgentDir -Force | Out-Null
-
-    # Clone to temp directory
-    $TempDir = Join-Path $env:TEMP "claude-ads-install-$(Get-Random)"
-    Write-Host "Downloading Claude Ads..."
-
-    try {
-        # Temporarily allow stderr (git writes progress to stderr — treated as error in PS 5.1)
-        $ErrorActionPreference = "Continue"
-        git clone --depth 1 $RepoUrl "$TempDir\claude-ads" 2>&1 | Out-Null
-        $ErrorActionPreference = "Stop"
-        if ($LASTEXITCODE -ne 0) { throw "Git clone failed" }
-
-        # Copy main skill + references
-        Write-Host "Installing skill files..."
-        Copy-Item "$TempDir\claude-ads\ads\SKILL.md" -Destination "$SkillDir\SKILL.md" -Force
-        Copy-Item "$TempDir\claude-ads\ads\references\*.md" -Destination "$SkillDir\references\" -Force
-
-        # Copy sub-skills
-        Write-Host "Installing sub-skills..."
-        Get-ChildItem "$TempDir\claude-ads\skills" -Directory | ForEach-Object {
-            $TargetDir = Join-Path $env:USERPROFILE ".claude\skills\$($_.Name)"
-            New-Item -ItemType Directory -Path $TargetDir -Force | Out-Null
-            Copy-Item (Join-Path $_.FullName "SKILL.md") -Destination "$TargetDir\SKILL.md" -Force
-
-            # Copy assets (industry templates) if they exist
-            $AssetsDir = Join-Path $_.FullName "assets"
-            if (Test-Path $AssetsDir) {
-                $TargetAssets = Join-Path $TargetDir "assets"
-                New-Item -ItemType Directory -Path $TargetAssets -Force | Out-Null
-                Copy-Item "$AssetsDir\*.md" -Destination "$TargetAssets\" -Force
-            }
-        }
-
-        # Copy agents
-        Write-Host "Installing subagents..."
-        Copy-Item "$TempDir\claude-ads\agents\*.md" -Destination "$AgentDir\" -Force
-
-        # Copy scripts (optional Python tools)
-        $ScriptsSource = "$TempDir\claude-ads\scripts"
-        if (Test-Path $ScriptsSource) {
-            Write-Host "Installing Python scripts..."
-            $ScriptsDir = Join-Path $SkillDir "scripts"
-            New-Item -ItemType Directory -Path $ScriptsDir -Force | Out-Null
-            Copy-Item "$ScriptsSource\*.py" -Destination "$ScriptsDir\" -Force
-            Copy-Item "$TempDir\claude-ads\requirements.txt" -Destination "$SkillDir\requirements.txt" -Force
-        }
-
-        # Install Python dependencies (landing page analysis, image validation)
-        Write-Host ""
-        Write-Host "Installing Python dependencies..."
-        $ErrorActionPreference = "Continue"
-        pip install -q -r "$SkillDir\requirements.txt" 2>$null
-        if ($LASTEXITCODE -eq 0) {
-            Write-Host "  OK Python dependencies installed" -ForegroundColor Green
-        } else {
-            Write-Host "  Warning: pip install failed. Run manually: pip install -r $SkillDir\requirements.txt" -ForegroundColor Yellow
-        }
-        $ErrorActionPreference = "Stop"
-
-        # Check for banana-claude (image generation provider)
-        Write-Host ""
-        $BananaPath = Join-Path $env:USERPROFILE ".claude\skills\banana\SKILL.md"
-        if (Test-Path $BananaPath) {
-            Write-Host "  OK banana-claude detected (image generation ready)" -ForegroundColor Green
-        } else {
-            Write-Host "  Warning: banana-claude not installed. Image generation requires it." -ForegroundColor Yellow
-            Write-Host "    Install: https://github.com/AgriciDaniel/banana-claude"
-            Write-Host "    Then run: /banana setup (to configure API key)"
-        }
-
-        Write-Host ""
-        Write-Host "Claude Ads installed successfully!" -ForegroundColor Green
-        Write-Host ""
-        Write-Host "  Installed:"
-        Write-Host "    - 1 main skill (ads orchestrator)"
-        Write-Host "    - 19 sub-skills (platform + functional + creative)"
-        Write-Host "    - 10 agents (6 audit + 4 creative)"
-        Write-Host "    - 25 reference files"
-        Write-Host "    - 12 industry templates"
-        Write-Host ""
-        Write-Host "Usage:"
-        Write-Host "  1. Start Claude Code:  claude"
-        Write-Host "  2. Run commands:       /ads audit"
-        Write-Host "                         /ads plan saas"
-        Write-Host "                         /ads google"
-    }
-    finally {
-        # Cleanup temp directory
-        if (Test-Path $TempDir) {
-            Remove-Item -Path $TempDir -Recurse -Force -ErrorAction SilentlyContinue
-        }
-    }
+function Write-Info {
+  param([string]$Message)
+  Write-Host "[INFO] $Message"
 }
 
-Main
+function Fail {
+  param([string]$Message)
+  throw $Message
+}
+
+function Test-Command {
+  param([Parameter(Mandatory = $true)][string]$Name)
+  return $null -ne (Get-Command $Name -ErrorAction SilentlyContinue)
+}
+
+function Refresh-ProcessPath {
+  $machinePath = [System.Environment]::GetEnvironmentVariable('Path', 'Machine')
+  $userPath = [System.Environment]::GetEnvironmentVariable('Path', 'User')
+  if ([string]::IsNullOrWhiteSpace($machinePath)) { $machinePath = '' }
+  if ([string]::IsNullOrWhiteSpace($userPath)) { $userPath = '' }
+  $env:Path = "$machinePath;$userPath"
+}
+
+function Ensure-Git {
+  if (Test-Command 'git') {
+    return
+  }
+
+  if (-not (Test-Command 'winget')) {
+    Fail 'git is missing and winget is not available. Install git manually and rerun.'
+  }
+
+  Write-Info 'git not found. Installing git with winget...'
+  winget install --id Git.Git -e --accept-package-agreements --accept-source-agreements | Out-Host
+  Refresh-ProcessPath
+
+  if (-not (Test-Command 'git')) {
+    Fail 'git is still missing after winget install.'
+  }
+}
+
+function Assert-TargetRepoOrEmpty {
+  if (-not (Test-Path -LiteralPath $TargetDir)) {
+    return
+  }
+
+  if (-not (Test-Path -LiteralPath $TargetDir -PathType Container)) {
+    Fail "$TargetDir exists and is not a directory. Remove it or choose another working directory."
+  }
+
+  if (-not (Test-Path -LiteralPath (Join-Path $TargetDir '.git'))) {
+    Fail "$TargetDir exists but is not a git repository. Rename/remove it, then rerun installer."
+  }
+
+  git -C $TargetDir rev-parse --is-inside-work-tree *> $null
+  if ($LASTEXITCODE -ne 0) {
+    Fail "$TargetDir is not a valid git repo."
+  }
+}
+
+function Ensure-CleanRepoBeforePull {
+  $dirty = git -C $TargetDir status --porcelain --untracked-files=normal
+  if (-not [string]::IsNullOrWhiteSpace(($dirty | Out-String))) {
+    Fail "$TargetDir has uncommitted changes. Commit/stash them before rerunning installer."
+  }
+}
+
+function Clone-OrUpdateRepo {
+  Assert-TargetRepoOrEmpty
+
+  if (-not (Test-Path -LiteralPath $TargetDir)) {
+    Write-Info "Cloning repository into $TargetDir..."
+    git clone $RepoUrl $TargetDir | Out-Host
+    return
+  }
+
+  Write-Info "Repository already exists at $TargetDir. Updating with git pull --ff-only..."
+  Ensure-CleanRepoBeforePull
+  git -C $TargetDir pull --ff-only | Out-Host
+  if ($LASTEXITCODE -ne 0) {
+    Fail 'git pull failed (non fast-forward or network issue).'
+  }
+}
+
+function Run-Bootstrap {
+  $bootstrapPath = Join-Path $TargetDir 'scripts/bootstrap.ps1'
+  if (-not (Test-Path -LiteralPath $bootstrapPath)) {
+    Fail "Bootstrap script not found at $bootstrapPath"
+  }
+
+  Write-Info 'Running bootstrap script...'
+  & powershell -ExecutionPolicy Bypass -File $bootstrapPath @BootstrapArgs
+}
+
+Ensure-Git
+Clone-OrUpdateRepo
+Run-Bootstrap
