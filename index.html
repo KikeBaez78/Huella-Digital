@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Huella Digital — Agencia de diseño y desarrollo donde cada píxel tiene propósito." />
+  <title>Huella Digital — Experiencias que Trascienden</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ───── NOISE OVERLAY ───── -->
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- ───── CUSTOM CURSOR ───── -->
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════════════ -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__container">
+      <a href="#hero" class="nav__logo" aria-label="Huella Digital Home">HD<span class="accent-dot">.</span></a>
+
+      <ul class="nav__links" role="list">
+        <li><a href="#servicios" class="nav__link">Servicios</a></li>
+        <li><a href="#trabajo" class="nav__link">Trabajo</a></li>
+        <li><a href="#proceso" class="nav__link">Proceso</a></li>
+        <li><a href="#nosotros" class="nav__link">Nosotros</a></li>
+      </ul>
+
+      <a href="#contacto" class="btn btn--sm btn--outline magnetic" data-magnetic>Hablemos</a>
+
+      <button class="nav__burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu__inner">
+      <ul role="list">
+        <li><a href="#servicios" class="mobile-link">Servicios</a></li>
+        <li><a href="#trabajo" class="mobile-link">Trabajo</a></li>
+        <li><a href="#proceso" class="mobile-link">Proceso</a></li>
+        <li><a href="#nosotros" class="mobile-link">Nosotros</a></li>
+        <li><a href="#contacto" class="mobile-link mobile-link--cta">Hablemos →</a></li>
+      </ul>
+      <div class="mobile-menu__footer">
+        <span>hola@huelladigital.io</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════ -->
+  <section class="hero" id="hero" aria-label="Hero">
+    <!-- Three.js Canvas -->
+    <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+
+    <div class="hero__content container">
+      <div class="hero__badge reveal-fade">
+        <span class="badge-pulse" aria-hidden="true"></span>
+        <span>Disponible para proyectos 2026</span>
+      </div>
+
+      <h1 class="hero__title">
+        <span class="hero__title-line split-line">Construimos</span>
+        <span class="hero__title-line hero__title-line--accent split-line">experiencias</span>
+        <span class="hero__title-line split-line">que dejan huella.</span>
+      </h1>
+
+      <p class="hero__sub reveal-fade">
+        Agencia de diseño y desarrollo donde cada píxel tiene propósito.<br />
+        Transformamos ideas en activos digitales extraordinarios.
+      </p>
+
+      <div class="hero__actions reveal-fade">
+        <a href="#trabajo" class="btn btn--primary magnetic" data-magnetic>
+          <span>Ver Nuestro Trabajo</span>
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#nosotros" class="btn btn--ghost">
+          <span>Descubrir Más</span>
+        </a>
+      </div>
+
+      <div class="hero__stats reveal-fade">
+        <div class="hero-stat">
+          <span class="hero-stat__num counter" data-target="150">0</span><span class="hero-stat__suffix">+</span>
+          <span class="hero-stat__label">Proyectos</span>
+        </div>
+        <div class="hero-stat__sep" aria-hidden="true"></div>
+        <div class="hero-stat">
+          <span class="hero-stat__num counter" data-target="8">0</span><span class="hero-stat__suffix">+</span>
+          <span class="hero-stat__label">Años de Experiencia</span>
+        </div>
+        <div class="hero-stat__sep" aria-hidden="true"></div>
+        <div class="hero-stat">
+          <span class="hero-stat__num counter" data-target="98">0</span><span class="hero-stat__suffix">%</span>
+          <span class="hero-stat__label">Clientes Satisfechos</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__scroll" aria-hidden="true">
+      <div class="scroll-track">
+        <div class="scroll-thumb"></div>
+      </div>
+      <span class="scroll-label">Scroll</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       TICKER
+  ═══════════════════════════════════════════════════ -->
+  <div class="ticker-wrap" aria-hidden="true">
+    <div class="ticker">
+      <span>DISEÑO</span><span class="ticker__sep">✦</span>
+      <span>DESARROLLO</span><span class="ticker__sep">✦</span>
+      <span>BRANDING</span><span class="ticker__sep">✦</span>
+      <span>MOTION</span><span class="ticker__sep">✦</span>
+      <span>3D &amp; WEB</span><span class="ticker__sep">✦</span>
+      <span>UX / UI</span><span class="ticker__sep">✦</span>
+      <span>ESTRATEGIA</span><span class="ticker__sep">✦</span>
+      <span>EXPERIENCIAS</span><span class="ticker__sep">✦</span>
+      <!-- duplicate for seamless loop -->
+      <span>DISEÑO</span><span class="ticker__sep">✦</span>
+      <span>DESARROLLO</span><span class="ticker__sep">✦</span>
+      <span>BRANDING</span><span class="ticker__sep">✦</span>
+      <span>MOTION</span><span class="ticker__sep">✦</span>
+      <span>3D &amp; WEB</span><span class="ticker__sep">✦</span>
+      <span>UX / UI</span><span class="ticker__sep">✦</span>
+      <span>ESTRATEGIA</span><span class="ticker__sep">✦</span>
+      <span>EXPERIENCIAS</span><span class="ticker__sep">✦</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       ABOUT
+  ═══════════════════════════════════════════════════ -->
+  <section class="section about" id="nosotros" aria-labelledby="about-heading">
+    <div class="container">
+      <div class="about__grid">
+
+        <div class="about__left">
+          <span class="section-label">// Sobre Nosotros</span>
+          <h2 id="about-heading" class="about__heading reveal-up">
+            No somos otra<br />
+            <em>agencia digital.</em>
+          </h2>
+          <p class="about__body reveal-up">
+            Somos arquitectos de experiencias que trascienden la pantalla.
+            Combinamos diseño obsesivo, tecnología de vanguardia y estrategia
+            afilada para construir activos digitales que trabajan mientras duermes.
+          </p>
+          <p class="about__body reveal-up">
+            Cada proyecto que tocamos lleva nuestra firma: atención al detalle
+            casi irracional, código limpio como un bisturí, y una interfaz
+            que hace que los usuarios se pregunten cómo vivieron sin ella.
+          </p>
+          <a href="#trabajo" class="link-arrow reveal-up" data-magnetic>
+            Ver proyectos
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="about__right">
+          <div class="about__stats-grid">
+            <div class="stat-card reveal-up" data-delay="0">
+              <span class="stat-card__num counter" data-target="150">0</span>
+              <span class="stat-card__suffix">+</span>
+              <p>Proyectos entregados con excelencia</p>
+            </div>
+            <div class="stat-card reveal-up" data-delay="100">
+              <span class="stat-card__num counter" data-target="8">0</span>
+              <span class="stat-card__suffix">años</span>
+              <p>Dejando huella en la industria</p>
+            </div>
+            <div class="stat-card reveal-up" data-delay="200">
+              <span class="stat-card__num counter" data-target="40">0</span>
+              <span class="stat-card__suffix">+</span>
+              <p>Clientes en 12 países</p>
+            </div>
+            <div class="stat-card stat-card--accent reveal-up" data-delay="300">
+              <span class="stat-card__num">∞</span>
+              <p>Líneas de código escritas con propósito</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SERVICES
+  ═══════════════════════════════════════════════════ -->
+  <section class="section services" id="servicios" aria-labelledby="services-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">// Qué Hacemos</span>
+        <h2 id="services-heading" class="section-title reveal-up">
+          Servicios que<br /><em>mueven agujas</em>
+        </h2>
+      </div>
+
+      <div class="services__grid">
+
+        <div class="service-card tilt-card reveal-up" data-delay="0">
+          <span class="service-card__num">01</span>
+          <div class="service-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <path d="M6 12C6 8.686 8.686 6 12 6H36C39.314 6 42 8.686 42 12V36C42 39.314 39.314 42 36 42H12C8.686 42 6 39.314 6 36V12Z" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="24" cy="24" r="8" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M24 6V16M24 32V42M6 24H16M32 24H42" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Diseño &amp; Identidad</h3>
+          <p>Marcas que no se olvidan. Identidades visuales que comunican autoridad, carácter y deseo desde el primer contacto.</p>
+          <ul class="service-card__list">
+            <li>Brand Identity</li>
+            <li>UI / UX Design</li>
+            <li>Design Systems</li>
+            <li>Motion Graphics</li>
+          </ul>
+          <a href="#contacto" class="service-card__cta">Explorar →</a>
+        </div>
+
+        <div class="service-card tilt-card reveal-up" data-delay="100">
+          <span class="service-card__num">02</span>
+          <div class="service-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <rect x="6" y="6" width="36" height="36" rx="4" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M8 18L18 26L8 34" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M26 34H40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Desarrollo Web</h3>
+          <p>Código que respira. Aplicaciones y sitios construidos con arquitectura sólida, rendimiento obsesivo y escalabilidad real.</p>
+          <ul class="service-card__list">
+            <li>React / Next.js Apps</li>
+            <li>E-commerce Premium</li>
+            <li>APIs &amp; Integraciones</li>
+            <li>Performance &amp; SEO</li>
+          </ul>
+          <a href="#contacto" class="service-card__cta">Explorar →</a>
+        </div>
+
+        <div class="service-card tilt-card reveal-up" data-delay="200">
+          <span class="service-card__num">03</span>
+          <div class="service-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <path d="M24 6L30 18H42L32 26L36 38L24 30L12 38L16 26L6 18H18L24 6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Motion &amp; 3D</h3>
+          <p>El movimiento correcto no se nota — se siente. Animaciones y experiencias 3D que elevan el valor percibido exponencialmente.</p>
+          <ul class="service-card__list">
+            <li>Three.js / WebGL</li>
+            <li>GSAP Animations</li>
+            <li>Spline 3D Scenes</li>
+            <li>Video &amp; Reel</li>
+          </ul>
+          <a href="#contacto" class="service-card__cta">Explorar →</a>
+        </div>
+
+        <div class="service-card tilt-card reveal-up" data-delay="300">
+          <span class="service-card__num">04</span>
+          <div class="service-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <path d="M6 38L18 26L26 34L38 18L42 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="42" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <h3>Estrategia Digital</h3>
+          <p>La belleza sin estrategia es arte. Nosotros hacemos negocio. Consultoría que traduce visión en crecimiento medible.</p>
+          <ul class="service-card__list">
+            <li>Consultoría Digital</li>
+            <li>Growth Strategy</li>
+            <li>Analytics &amp; Data</li>
+            <li>Conversión &amp; CRO</li>
+          </ul>
+          <a href="#contacto" class="service-card__cta">Explorar →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       WORK
+  ═══════════════════════════════════════════════════ -->
+  <section class="section work" id="trabajo" aria-labelledby="work-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">// Nuestro Trabajo</span>
+        <h2 id="work-heading" class="section-title reveal-up">
+          Proyectos que<br /><em>hablan por sí solos</em>
+        </h2>
+      </div>
+    </div>
+
+    <div class="work__list">
+
+      <article class="work-item reveal-up" data-category="Diseño &amp; Desarrollo">
+        <div class="work-item__inner">
+          <div class="work-item__meta">
+            <span class="work-item__num">01</span>
+            <span class="work-item__tag">Diseño &amp; Desarrollo</span>
+          </div>
+          <div class="work-item__body">
+            <h3 class="work-item__title">Nexus Finance Platform</h3>
+            <p class="work-item__desc">Dashboard financiero con visualizaciones 3D en tiempo real. Procesando $2B+ mensuales con latencia menor a 40ms.</p>
+            <div class="work-item__tags">
+              <span>Next.js</span>
+              <span>Three.js</span>
+              <span>PostgreSQL</span>
+            </div>
+          </div>
+          <div class="work-item__visual">
+            <div class="work-thumb g-nexus">
+              <span aria-hidden="true">NF</span>
+            </div>
+          </div>
+          <a href="#" class="work-item__link work-item__link--full" aria-label="Ver proyecto Nexus Finance">Ver Proyecto →</a>
+        </div>
+      </article>
+
+      <article class="work-item reveal-up" data-category="Motion &amp; Branding">
+        <div class="work-item__inner">
+          <div class="work-item__meta">
+            <span class="work-item__num">02</span>
+            <span class="work-item__tag">Motion &amp; Branding</span>
+          </div>
+          <div class="work-item__body">
+            <h3 class="work-item__title">Lumina Luxury Brand</h3>
+            <p class="work-item__desc">Identidad completa y sitio web para marca de lujo. Ganador de 3 premios de diseño internacionales en 2025.</p>
+            <div class="work-item__tags">
+              <span>Branding</span>
+              <span>WebGL</span>
+              <span>GSAP</span>
+            </div>
+          </div>
+          <div class="work-item__visual">
+            <div class="work-thumb g-lumina">
+              <span aria-hidden="true">LL</span>
+            </div>
+          </div>
+          <a href="#" class="work-item__link work-item__link--full" aria-label="Ver proyecto Lumina">Ver Proyecto →</a>
+        </div>
+      </article>
+
+      <article class="work-item reveal-up" data-category="Web App">
+        <div class="work-item__inner">
+          <div class="work-item__meta">
+            <span class="work-item__num">03</span>
+            <span class="work-item__tag">SaaS Product</span>
+          </div>
+          <div class="work-item__body">
+            <h3 class="work-item__title">Orbit SaaS Platform</h3>
+            <p class="work-item__desc">Plataforma de gestión para equipos remotos. 50,000+ usuarios activos en 30 países. NPS de 74 puntos.</p>
+            <div class="work-item__tags">
+              <span>React</span>
+              <span>Node.js</span>
+              <span>Redis</span>
+            </div>
+          </div>
+          <div class="work-item__visual">
+            <div class="work-thumb g-orbit">
+              <span aria-hidden="true">OR</span>
+            </div>
+          </div>
+          <a href="#" class="work-item__link work-item__link--full" aria-label="Ver proyecto Orbit">Ver Proyecto →</a>
+        </div>
+      </article>
+
+      <article class="work-item reveal-up" data-category="E-commerce">
+        <div class="work-item__inner">
+          <div class="work-item__meta">
+            <span class="work-item__num">04</span>
+            <span class="work-item__tag">E-commerce</span>
+          </div>
+          <div class="work-item__body">
+            <h3 class="work-item__title">Strata Streetwear</h3>
+            <p class="work-item__desc">Tienda de moda premium con experiencia de compra inmersiva. 300% de aumento en conversión en 90 días.</p>
+            <div class="work-item__tags">
+              <span>Shopify</span>
+              <span>Custom Theme</span>
+              <span>3D Product</span>
+            </div>
+          </div>
+          <div class="work-item__visual">
+            <div class="work-thumb g-strata">
+              <span aria-hidden="true">SS</span>
+            </div>
+          </div>
+          <a href="#" class="work-item__link work-item__link--full" aria-label="Ver proyecto Strata">Ver Proyecto →</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       PROCESS
+  ═══════════════════════════════════════════════════ -->
+  <section class="section process" id="proceso" aria-labelledby="process-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">// Cómo Trabajamos</span>
+        <h2 id="process-heading" class="section-title reveal-up">
+          Nuestro proceso,<br /><em>sin misterios</em>
+        </h2>
+      </div>
+
+      <div class="process__grid">
+
+        <div class="process-step reveal-up" data-delay="0">
+          <div class="process-step__num">01</div>
+          <div class="process-step__content">
+            <h3>Descubrimiento</h3>
+            <p>Nos obsesionamos con entender tu negocio, competencia y usuario antes de diseñar una sola línea. Estrategia primero, siempre.</p>
+          </div>
+        </div>
+
+        <div class="process-step reveal-up" data-delay="80">
+          <div class="process-step__num">02</div>
+          <div class="process-step__content">
+            <h3>Estrategia &amp; Wireframes</h3>
+            <p>Arquitectura de información con propósito. Cada pantalla tiene un objetivo, cada click tiene una razón de existir.</p>
+          </div>
+        </div>
+
+        <div class="process-step reveal-up" data-delay="160">
+          <div class="process-step__num">03</div>
+          <div class="process-step__content">
+            <h3>Diseño Visual</h3>
+            <p>Aquí la magia cobra vida. Diseños de alta fidelidad que dejan a tu equipo sin palabras y a tu competencia tomando notas.</p>
+          </div>
+        </div>
+
+        <div class="process-step reveal-up" data-delay="240">
+          <div class="process-step__num">04</div>
+          <div class="process-step__content">
+            <h3>Desarrollo</h3>
+            <p>Código limpio, rápido y escalable. Usamos las mejores herramientas para construir algo que dure y que crezca contigo.</p>
+          </div>
+        </div>
+
+        <div class="process-step reveal-up" data-delay="320">
+          <div class="process-step__num">05</div>
+          <div class="process-step__content">
+            <h3>Lanzamiento</h3>
+            <p>Deploy controlado, tests exhaustivos y monitoreo en tiempo real. Cuando lanzamos, lanzamos bien. Sin sorpresas.</p>
+          </div>
+        </div>
+
+        <div class="process-step reveal-up" data-delay="400">
+          <div class="process-step__num">06</div>
+          <div class="process-step__content">
+            <h3>Crecimiento</h3>
+            <p>El trabajo no termina al lanzar. Iteramos, optimizamos y escalamos basados en datos reales de usuarios reales.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       TESTIMONIALS
+  ═══════════════════════════════════════════════════ -->
+  <section class="section testimonials" aria-labelledby="testimonials-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">// Lo Que Dicen</span>
+        <h2 id="testimonials-heading" class="section-title reveal-up">
+          Clientes que<br /><em>no mienten</em>
+        </h2>
+      </div>
+
+      <div class="testimonials__grid">
+
+        <div class="testimonial-card reveal-up" data-delay="0">
+          <div class="testimonial-card__stars" aria-label="5 stars">★★★★★</div>
+          <blockquote>
+            "Huella Digital no entregó un sitio web. Entregó un activo de negocio.
+            En 6 meses recuperamos la inversión 8 veces. No hay más que decir."
+          </blockquote>
+          <div class="testimonial-card__author">
+            <div class="author-avatar g-nexus" aria-hidden="true">MR</div>
+            <div>
+              <strong>Marco Rodríguez</strong>
+              <span>CEO, Nexus Capital</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal-up" data-delay="120">
+          <div class="testimonial-card__stars" aria-label="5 stars">★★★★★</div>
+          <blockquote>
+            "El proceso fue tan profesional como el resultado. Saben exactamente
+            qué necesitas antes de que tú lo sepas. Recomendados sin dudar."
+          </blockquote>
+          <div class="testimonial-card__author">
+            <div class="author-avatar g-lumina" aria-hidden="true">SL</div>
+            <div>
+              <strong>Sofia Laurent</strong>
+              <span>Fundadora, Lumina Beauty</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal-up" data-delay="240">
+          <div class="testimonial-card__stars" aria-label="5 stars">★★★★★</div>
+          <blockquote>
+            "Nuestros usuarios piden más features solo para seguir usando el diseño.
+            Eso no es un UX mediocre — eso es arte funcional."
+          </blockquote>
+          <div class="testimonial-card__author">
+            <div class="author-avatar g-orbit" aria-hidden="true">JK</div>
+            <div>
+              <strong>James Kim</strong>
+              <span>CTO, Orbit Technologies</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       CTA / CONTACT
+  ═══════════════════════════════════════════════════ -->
+  <section class="section cta-section" id="contacto" aria-labelledby="cta-heading">
+    <div class="cta-glow" aria-hidden="true"></div>
+    <div class="container">
+      <div class="cta-content">
+        <span class="section-label">// Próximo Paso</span>
+        <h2 id="cta-heading" class="cta-title reveal-up">
+          ¿Listo para dejar<br /><em>tu huella?</em>
+        </h2>
+        <p class="cta-sub reveal-up">
+          Cuéntanos tu proyecto. Tenemos 48 horas para responderte con
+          una propuesta que vale la pena leer.
+        </p>
+        <div class="cta-actions reveal-up">
+          <a href="mailto:hola@huelladigital.io" class="btn btn--primary btn--lg magnetic" data-magnetic>
+            <span>Empezar Proyecto</span>
+            <svg class="btn__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#" class="btn btn--ghost btn--lg">
+            <span>Agendar Llamada</span>
+          </a>
+        </div>
+        <p class="cta-contact">
+          <a href="mailto:hola@huelladigital.io">hola@huelladigital.io</a>
+          <span aria-hidden="true">·</span>
+          <a href="tel:+12345678900">+1 (234) 567-890</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="#hero" class="footer__logo" aria-label="Huella Digital">HD<span class="accent-dot">.</span></a>
+          <p>Construimos experiencias digitales que dejan huella. Basados en Latinoamérica, trabajando para el mundo.</p>
+          <div class="footer__socials">
+            <a href="#" class="social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="X / Twitter">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" stroke="currentColor" stroke-width="1.5"/><circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="1.5"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="Dribbble">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M2 12c3.333-2 6.667-3 10-3s6.667 1 10 3" stroke="currentColor" stroke-width="1.5"/><path d="M7 3.5C9 8 10.5 12 11 20" stroke="currentColor" stroke-width="1.5"/><path d="M17 3.5C15 8 13.5 12 13 20" stroke="currentColor" stroke-width="1.5"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <nav class="footer__nav" aria-label="Footer navigation">
+          <div class="footer__col">
+            <h4>Servicios</h4>
+            <ul role="list">
+              <li><a href="#servicios">Diseño &amp; Identidad</a></li>
+              <li><a href="#servicios">Desarrollo Web</a></li>
+              <li><a href="#servicios">Motion &amp; 3D</a></li>
+              <li><a href="#servicios">Estrategia Digital</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>Empresa</h4>
+            <ul role="list">
+              <li><a href="#nosotros">Sobre Nosotros</a></li>
+              <li><a href="#trabajo">Trabajo</a></li>
+              <li><a href="#proceso">Proceso</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>Contacto</h4>
+            <ul role="list">
+              <li><a href="mailto:hola@huelladigital.io">hola@huelladigital.io</a></li>
+              <li><a href="tel:+12345678900">+1 (234) 567-890</a></li>
+              <li><a href="#contacto">Agendar Llamada</a></li>
+              <li><a href="#">Formulario</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <div class="footer__bottom">
+        <p>© 2026 Huella Digital. Todos los derechos reservados.</p>
+        <div class="footer__legal">
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ───── SCRIPTS ───── -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
