@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Casa Viña — Tu refugio de lujo en el corazón del Valle de Guadalupe." />
+<title>Casa Viña — Valle de Guadalupe</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+
+<style>
+/* ══════════════════════════════════════
+   VARIABLES
+══════════════════════════════════════ */
+:root {
+  --bg:        #0d0a07;
+  --bg-2:      #110d09;
+  --bg-3:      #171109;
+  --surface:   #1e160d;
+  --surface-2: #261c10;
+  --gold:      #c9a84c;
+  --gold-2:    #e8c97a;
+  --gold-dim:  rgba(201,168,76,.12);
+  --gold-glow: rgba(201,168,76,.28);
+  --green:     #4a6741;
+  --border:    rgba(201,168,76,.12);
+  --border-2:  rgba(201,168,76,.22);
+  --text:      #f2ede4;
+  --text-2:    #a8957e;
+  --text-muted:#5a4a38;
+  --serif:     'Cormorant Garamond', Georgia, serif;
+  --sans:      'Inter', sans-serif;
+  --mono:      'JetBrains Mono', monospace;
+  --container: 1240px;
+  --nav-h:     68px;
+  --ease-out:  cubic-bezier(.16,1,.3,1);
+}
+
+/* ══════════════════════════════════════
+   RESET
+══════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.65;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+img,svg{display:block}
+input,select,textarea,button{font:inherit}
+::selection{background:var(--gold);color:#000}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--surface-2);border-radius:3px}
+
+/* ══════════════════════════════════════
+   NOISE
+══════════════════════════════════════ */
+.noise{
+  position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px 200px;mix-blend-mode:overlay;
+}
+
+/* ══════════════════════════════════════
+   LAYOUT
+══════════════════════════════════════ */
+.container{width:100%;max-width:var(--container);margin:0 auto;padding:0 clamp(24px,5vw,72px)}
+.section{padding:clamp(80px,10vw,130px) 0}
+
+/* ══════════════════════════════════════
+   TYPE
+══════════════════════════════════════ */
+em{font-style:italic;color:var(--gold)}
+.sec-label{display:inline-block;font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;opacity:.85}
+.sec-header{max-width:600px;margin-bottom:clamp(40px,6vw,72px)}
+.sec-title{font-family:var(--serif);font-size:clamp(2.4rem,5vw,4.2rem);font-weight:400;letter-spacing:-.01em;line-height:1.08;margin-bottom:20px;color:var(--text)}
+.sec-desc{font-size:1.05rem;color:var(--text-2);max-width:500px;line-height:1.7}
+
+/* ══════════════════════════════════════
+   BUTTONS
+══════════════════════════════════════ */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:500;font-size:.9rem;border-radius:100px;transition:all .35s var(--ease-out);white-space:nowrap;cursor:pointer;border:none;outline:none}
+.btn svg{width:15px;height:15px;transition:transform .3s var(--ease-out)}
+.btn:hover svg{transform:translate(2px,-2px)}
+.btn--gold{background:var(--gold);color:#000;padding:14px 28px;font-weight:600}
+.btn--gold:hover{background:var(--gold-2);box-shadow:0 0 40px var(--gold-glow)}
+.btn--ghost{border:1px solid var(--border-2);color:var(--text-2);padding:14px 28px;background:transparent}
+.btn--ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn--lg{padding:16px 32px;font-size:.95rem}
+.btn--full{width:100%;justify-content:center}
+
+/* ══════════════════════════════════════
+   WHATSAPP FLOAT
+══════════════════════════════════════ */
+.wa-float{
+  position:fixed;bottom:28px;right:28px;z-index:500;
+  background:#25D366;color:#fff;border-radius:100px;
+  padding:14px 20px;display:flex;align-items:center;gap:10px;
+  font-weight:600;font-size:.875rem;
+  box-shadow:0 8px 32px rgba(37,211,102,.4);
+  transition:transform .3s var(--ease-out),box-shadow .3s;
+}
+.wa-float svg{width:20px;height:20px}
+.wa-float:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(37,211,102,.55)}
+
+/* ══════════════════════════════════════
+   NAV
+══════════════════════════════════════ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+.nav.is-scrolled{background:rgba(13,10,7,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-color:var(--border)}
+.nav__wrap{max-width:var(--container);margin:0 auto;padding:0 clamp(24px,5vw,72px);height:100%;display:flex;align-items:center;gap:40px}
+.nav__logo{font-family:var(--serif);font-size:1.3rem;font-weight:500;color:var(--text);flex-shrink:0;letter-spacing:.01em;transition:opacity .2s}
+.nav__logo span{color:var(--gold)}
+.nav__logo:hover{opacity:.75}
+.nav__links{display:flex;align-items:center;gap:32px;margin-left:auto}
+.nav__links a{font-size:.875rem;color:var(--text-2);transition:color .2s}
+.nav__links a:hover{color:var(--text)}
+.nav__cta{margin-left:16px}
+.nav__burger{display:none;flex-direction:column;gap:5px;padding:4px;margin-left:auto;background:none;border:none;cursor:pointer}
+.nav__burger span{display:block;width:22px;height:1.5px;background:var(--text);transition:transform .3s var(--ease-out),opacity .3s}
+.nav__burger.is-open span:first-child{transform:translateY(3.25px) rotate(45deg)}
+.nav__burger.is-open span:last-child{transform:translateY(-3.25px) rotate(-45deg)}
+
+/* Mobile menu */
+.mobile-menu{position:fixed;inset:0;z-index:99;background:var(--bg);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s var(--ease-out)}
+.mobile-menu.is-open{opacity:1;pointer-events:auto}
+.mobile-menu ul{display:flex;flex-direction:column;gap:8px;text-align:center}
+.mob-link{display:block;font-family:var(--serif);font-size:clamp(2rem,7vw,3.5rem);font-weight:300;color:var(--text-2);padding:6px 0;transition:color .2s}
+.mob-link:hover,.mob-link--cta{color:var(--gold)}
+
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden}
+.hero__bg{position:absolute;inset:0}
+.hero__gradient{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 65% 40%,rgba(74,103,65,.18) 0%,transparent 60%),
+    radial-gradient(ellipse 60% 80% at 20% 70%,rgba(139,69,19,.12) 0%,transparent 60%),
+    radial-gradient(ellipse 100% 100% at 50% 50%,rgba(201,168,76,.04) 0%,transparent 70%),
+    linear-gradient(160deg,#0d0a07 0%,#110d09 40%,#0f0b08 100%);
+  animation:bgPulse 12s ease-in-out infinite alternate;
+}
+@keyframes bgPulse{from{opacity:1}to{opacity:.85;filter:hue-rotate(5deg)}}
+.hero__vines{position:absolute;inset:0;opacity:.04;background-image:repeating-linear-gradient(-45deg,transparent,transparent 60px,rgba(74,103,65,.3) 60px,rgba(74,103,65,.3) 61px)}
+.hero__content{position:relative;z-index:1;padding-top:calc(var(--nav-h) + 48px);padding-bottom:100px;max-width:860px}
+
+.hero__eyebrow{display:flex;align-items:center;gap:16px;margin-bottom:32px;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);opacity:0;transition:opacity .9s var(--ease-out)}
+.eyebrow-line{display:block;height:1px;width:40px;background:var(--gold);opacity:.5}
+
+.hero__title{font-family:var(--serif);font-size:clamp(3.5rem,8.5vw,8rem);font-weight:300;line-height:1.0;letter-spacing:-.02em;margin-bottom:28px}
+.tl{display:block;overflow:hidden;clip-path:inset(0 0 100% 0);transition:clip-path 1s var(--ease-out)}
+.tl.is-visible{clip-path:inset(0 0 0% 0)}
+.tl--serif{font-style:italic;color:var(--gold)}
+
+.hero__sub{font-size:clamp(1rem,1.8vw,1.2rem);color:var(--text-2);max-width:520px;margin-bottom:44px;opacity:0;transition:opacity .9s var(--ease-out)}
+.hero__actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:52px;opacity:0;transition:opacity .9s var(--ease-out)}
+.hero__pills{display:flex;align-items:center;gap:10px;flex-wrap:wrap;opacity:0;transition:opacity .9s var(--ease-out)}
+.pill{border:1px solid var(--border);border-radius:100px;padding:7px 16px;font-size:.8rem;color:var(--text-2);background:rgba(255,255,255,.03);backdrop-filter:blur(8px);white-space:nowrap}
+
+.hero__scroll{position:absolute;bottom:36px;left:clamp(24px,5vw,72px);z-index:1;display:flex;align-items:center;gap:14px;opacity:0;transition:opacity .8s 1.6s}
+.hero__scroll.is-visible{opacity:1}
+.scroll-bar{width:1px;height:56px;background:rgba(255,255,255,.1);position:relative;overflow:hidden}
+.scroll-fill{position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--gold);animation:fillDown 2.2s ease-in-out infinite}
+@keyframes fillDown{0%{top:-100%}50%{top:0%}100%{top:100%}}
+.hero__scroll span{font-family:var(--mono);font-size:.68rem;color:var(--text-muted);letter-spacing:.14em;writing-mode:vertical-lr;transform:rotate(180deg)}
+
+/* ══════════════════════════════════════
+   STRIP
+══════════════════════════════════════ */
+.strip{background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:36px 0}
+.strip__grid{display:flex;align-items:center;justify-content:center}
+.strip__item{display:flex;flex-direction:column;align-items:center;gap:4px;padding:0 clamp(24px,5vw,72px);text-align:center}
+.strip__num{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:400;color:var(--gold);line-height:1}
+.strip__label{font-size:.8rem;color:var(--text-muted);letter-spacing:.06em}
+.strip__div{width:1px;height:48px;background:var(--border);flex-shrink:0}
+
+/* ══════════════════════════════════════
+   AMENIDADES
+══════════════════════════════════════ */
+.amenidades__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:24px;overflow:hidden}
+.amen-card{background:var(--bg-3);padding:clamp(28px,4vw,44px);transition:background .3s;position:relative;overflow:hidden}
+.amen-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,var(--gold-dim) 0%,transparent 60%);opacity:0;transition:opacity .4s}
+.amen-card:hover{background:var(--bg-2)}
+.amen-card:hover::after{opacity:1}
+.amen-card__icon{width:36px;height:36px;color:var(--gold);margin-bottom:20px;transition:transform .4s var(--ease-out)}
+.amen-card:hover .amen-card__icon{transform:scale(1.1) rotate(-3deg)}
+.amen-card h3{font-family:var(--serif);font-size:1.25rem;font-weight:500;margin-bottom:10px;color:var(--text)}
+.amen-card p{font-size:.875rem;color:var(--text-2);line-height:1.65}
+
+/* ══════════════════════════════════════
+   GALERÍA
+══════════════════════════════════════ */
+.galeria{background:var(--bg-2)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:320px 240px;gap:12px;padding:0 clamp(24px,5vw,72px);max-width:calc(var(--container) + clamp(48px,10vw,144px));margin:0 auto 24px}
+.g-cell{position:relative;border-radius:16px;overflow:hidden}
+.g-cell--tall{grid-row:span 2}
+.g-cell--wide{grid-column:span 2}
+.g-img{width:100%;height:100%;display:flex;align-items:flex-end;padding:20px;transition:transform .6s var(--ease-out)}
+.g-cell:hover .g-img{transform:scale(1.04)}
+.g-exterior{background:linear-gradient(145deg,#1a2e0d,#2d4a18 40%,#4a6741)}
+.g-pool{background:linear-gradient(145deg,#0a1a2e,#0d2a3a 60%,#1a4a5e)}
+.g-interior{background:linear-gradient(145deg,#2a1a0a,#3d2510 60%,#5a3818)}
+.g-terraza{background:linear-gradient(145deg,#2a1a00,#4a2800 40%,#8b4513 70%,#c9a84c)}
+.g-bedroom{background:linear-gradient(145deg,#1a1218,#2e1a28 60%,#4a2a38)}
+.g-label{position:relative;z-index:1;font-size:.78rem;font-family:var(--mono);color:rgba(255,255,255,.6);letter-spacing:.08em;background:rgba(0,0,0,.35);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:5px 12px}
+.gallery-note{font-size:.78rem;font-family:var(--mono);color:var(--text-muted);text-align:center;margin-top:8px}
+
+/* ══════════════════════════════════════
+   EXPERIENCIA
+══════════════════════════════════════ */
+.experiencia__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,8vw,100px);align-items:center}
+.exp-title{font-family:var(--serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:300;line-height:1.1;margin:16px 0 24px}
+.exp-body{font-size:1rem;color:var(--text-2);line-height:1.75;margin-bottom:16px;max-width:480px}
+.exp-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.exp-tags span{font-size:.82rem;border:1px solid var(--border);border-radius:100px;padding:7px 16px;color:var(--text-2);transition:border-color .2s,color .2s}
+.exp-tags span:hover{border-color:var(--border-2);color:var(--text)}
+.exp-card{background:var(--surface);border:1px solid var(--border);border-radius:24px;overflow:hidden}
+.exp-card__img{height:240px;width:100%;background:linear-gradient(145deg,#1a2e0d,#2d4a18 40%,#4a6741 70%,#8b7340)}
+.exp-card__body{padding:28px 28px 32px}
+.exp-card__body h3{font-family:var(--serif);font-size:1.4rem;font-weight:400;margin-bottom:10px;color:var(--text)}
+.exp-card__body p{font-size:.875rem;color:var(--text-2);line-height:1.65;margin-bottom:20px}
+.exp-list{display:flex;flex-direction:column;gap:8px}
+.exp-list li{font-size:.83rem;color:var(--text-muted)}
+
+/* ══════════════════════════════════════
+   RESEÑAS
+══════════════════════════════════════ */
+.resenas{background:var(--bg-2)}
+.resenas__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.resena-card{background:var(--bg-3);border:1px solid var(--border);border-radius:20px;padding:32px 28px;display:flex;flex-direction:column;gap:20px;transition:border-color .3s,transform .4s var(--ease-out)}
+.resena-card:hover{border-color:var(--border-2);transform:translateY(-5px)}
+.resena-card--accent{background:linear-gradient(145deg,var(--bg-3),rgba(201,168,76,.05));border-color:var(--border-2)}
+.resena-card__stars{color:var(--gold);font-size:.9rem;letter-spacing:2px}
+.resena-card blockquote{font-family:var(--serif);font-size:1.05rem;font-style:italic;color:var(--text-2);line-height:1.7;flex:1}
+.resena-author{display:flex;align-items:center;gap:14px}
+.resena-avatar{width:40px;height:40px;border-radius:50%;background:var(--surface-2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:600;color:var(--text-muted);flex-shrink:0}
+.resena-author strong{display:block;font-size:.875rem;color:var(--text);font-weight:600}
+.resena-author span{font-size:.78rem;color:var(--text-muted)}
+
+/* ══════════════════════════════════════
+   CONTACTO
+══════════════════════════════════════ */
+.contacto__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,8vw,100px);align-items:start}
+.contacto__title{font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.1;margin:16px 0 16px}
+.contacto__desc{font-size:1rem;color:var(--text-2);margin-bottom:36px;line-height:1.7}
+.contacto__info{display:flex;flex-direction:column;gap:12px;margin-bottom:36px}
+.contact-row{display:flex;align-items:center;gap:16px;padding:14px 18px;border:1px solid var(--border);border-radius:12px;transition:border-color .2s,background .2s;color:var(--text)}
+.contact-row:hover{border-color:var(--border-2);background:rgba(255,255,255,.02)}
+.contact-row--static:hover{background:transparent;border-color:var(--border)}
+.contact-icon{width:36px;height:36px;border-radius:8px;background:var(--surface);display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0}
+.contact-icon svg{width:16px;height:16px}
+.contact-row strong{display:block;font-size:.8rem;font-weight:600;color:var(--text)}
+.contact-row span{font-size:.825rem;color:var(--text-2)}
+.rates-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.rates-box__header{background:var(--gold-dim);border-bottom:1px solid var(--border);padding:12px 20px;font-size:.78rem;font-family:var(--mono);color:var(--gold);letter-spacing:.1em}
+.rates-box__body{padding:8px 0}
+.rate-row{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;font-size:.875rem;border-bottom:1px solid var(--border)}
+.rate-row:last-child{border-bottom:none}
+.rate-row span{color:var(--text-2)}
+.rate-row strong{color:var(--gold);font-weight:600}
+.rates-note{padding:10px 20px 14px;font-size:.75rem;color:var(--text-muted);line-height:1.5}
+
+/* ══════════════════════════════════════
+   FORM
+══════════════════════════════════════ */
+.booking-form{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:clamp(28px,4vw,48px)}
+.booking-form h3{font-family:var(--serif);font-size:1.6rem;font-weight:400;color:var(--text);margin-bottom:28px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.form-group label{font-size:.8rem;font-weight:500;color:var(--text-2);letter-spacing:.02em}
+.form-group input,.form-group select,.form-group textarea{background:var(--bg-3);border:1px solid var(--border);border-radius:10px;padding:12px 16px;font-size:.9rem;color:var(--text);transition:border-color .2s,box-shadow .2s;outline:none;width:100%}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--text-muted)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-dim)}
+input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(.5) sepia(1) hue-rotate(20deg);cursor:pointer}
+.form-group select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9L12 15L18 9' stroke='%235a4a38' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:16px;padding-right:40px}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-note{text-align:center;margin-top:12px;font-size:.78rem;color:var(--text-muted)}
+.form-msg{text-align:center;font-size:.83rem;margin-top:12px}
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+.footer{background:var(--bg-2);border-top:1px solid var(--border);padding:clamp(48px,7vw,80px) 0 32px}
+.footer__inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:clamp(32px,6vw,80px);margin-bottom:clamp(32px,5vw,56px);align-items:start}
+.footer__logo{display:inline-block;font-family:var(--serif);font-size:1.3rem;font-weight:400;color:var(--text);margin-bottom:14px;transition:opacity .2s}
+.footer__logo span{color:var(--gold)}
+.footer__logo:hover{opacity:.75}
+.footer__brand p{font-size:.875rem;color:var(--text-muted);line-height:1.65;max-width:300px}
+.footer__links ul,.footer__contact{display:flex;flex-direction:column;gap:10px}
+.footer__links a,.footer__contact a,.footer__contact span{font-size:.875rem;color:var(--text-muted);transition:color .2s}
+.footer__links a:hover,.footer__contact a:hover{color:var(--text)}
+.footer__bottom{display:flex;align-items:center;justify-content:space-between;padding-top:24px;border-top:1px solid var(--border);font-size:.78rem;color:var(--text-muted)}
+.footer__bottom a{color:var(--gold)}
+
+/* ══════════════════════════════════════
+   REVEALS
+══════════════════════════════════════ */
+.reveal-up{opacity:0;transform:translateY(36px);transition:opacity .85s var(--ease-out),transform .85s var(--ease-out)}
+.reveal-up.is-visible{opacity:1;transform:none}
+.reveal-fade{opacity:0;transition:opacity .85s var(--ease-out)}
+.reveal-fade.is-visible{opacity:1}
+[data-delay="80"].reveal-up{transition-delay:.08s}
+[data-delay="100"].reveal-up{transition-delay:.1s}
+[data-delay="120"].reveal-up{transition-delay:.12s}
+[data-delay="150"].reveal-up{transition-delay:.15s}
+[data-delay="160"].reveal-up{transition-delay:.16s}
+[data-delay="200"].reveal-up{transition-delay:.2s}
+[data-delay="240"].reveal-up{transition-delay:.24s}
+[data-delay="300"].reveal-up{transition-delay:.3s}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+@media(max-width:1024px){
+  .amenidades__grid{grid-template-columns:repeat(2,1fr)}
+  .experiencia__grid{grid-template-columns:1fr;gap:48px}
+  .contacto__grid{grid-template-columns:1fr}
+}
+@media(max-width:900px){
+  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:auto}
+  .g-cell--tall{grid-row:span 1}
+  .g-cell--wide{grid-column:span 2}
+  .resenas__grid{grid-template-columns:1fr;max-width:520px}
+  .footer__inner{grid-template-columns:1fr 1fr}
+  .footer__brand{grid-column:span 2}
+}
+@media(max-width:768px){
+  .nav__links,.nav__cta{display:none}
+  .nav__burger{display:flex}
+  .strip__grid{flex-wrap:wrap;gap:24px}
+  .strip__div{display:none}
+  .strip__item{flex:1;min-width:100px}
+  .amenidades__grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr;grid-template-rows:auto}
+  .g-cell--wide,.g-cell--tall{grid-column:span 1;grid-row:span 1}
+  .g-img{height:220px}
+  .hero__actions{flex-direction:column;align-items:flex-start}
+  .form-row{grid-template-columns:1fr}
+  .footer__inner{grid-template-columns:1fr}
+  .footer__brand{grid-column:span 1}
+  .footer__bottom{flex-direction:column;gap:8px;text-align:center}
+  .wa-float span{display:none}
+  .wa-float{padding:14px;border-radius:50%}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition-duration:.01ms !important}}
+</style>
+</head>
+<body>
+
+<div class="noise" aria-hidden="true"></div>
+
+<!-- WhatsApp flotante -->
+<a href="https://wa.me/526641234567?text=Hola%2C%20me%20interesa%20rentar%20Casa%20Vi%C3%B1a%20en%20Valle%20de%20Guadalupe"
+   class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span>Reservar</span>
+</a>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav__wrap">
+    <a href="#hero" class="nav__logo">Casa Viña<span>.</span></a>
+    <ul class="nav__links">
+      <li><a href="#amenidades">Amenidades</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#experiencia">El Valle</a></li>
+      <li><a href="#contacto">Reservar</a></li>
+    </ul>
+    <a href="#contacto" class="btn btn--gold nav__cta">Reservar Ahora</a>
+    <button class="nav__burger" id="navBurger" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <ul>
+    <li><a href="#amenidades" class="mob-link">Amenidades</a></li>
+    <li><a href="#galeria"    class="mob-link">Galería</a></li>
+    <li><a href="#experiencia" class="mob-link">El Valle</a></li>
+    <li><a href="#resenas"    class="mob-link">Reseñas</a></li>
+    <li><a href="#contacto"   class="mob-link mob-link--cta">Reservar →</a></li>
+  </ul>
+</div>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero" id="hero">
+  <div class="hero__bg" aria-hidden="true">
+    <div class="hero__gradient"></div>
+    <div class="hero__vines"></div>
+  </div>
+  <div class="hero__content container">
+    <div class="hero__eyebrow" id="heroEyebrow">
+      <span class="eyebrow-line"></span>
+      <span>Valle de Guadalupe, Baja California</span>
+      <span class="eyebrow-line"></span>
+    </div>
+    <h1 class="hero__title">
+      <span class="tl" id="tl1">Tu refugio</span>
+      <span class="tl tl--serif" id="tl2">en el corazón</span>
+      <span class="tl" id="tl3">del vino.</span>
+    </h1>
+    <p class="hero__sub" id="heroSub">
+      Una casa diseñada para desconectar, con vista a los viñedos,<br />
+      piscina privada y todo el Valle a tu puerta.
+    </p>
+    <div class="hero__actions" id="heroActions">
+      <a href="#contacto" class="btn btn--gold btn--lg">
+        <span>Consultar Disponibilidad</span>
+        <svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#galeria" class="btn btn--ghost btn--lg">Ver la Casa</a>
+    </div>
+    <div class="hero__pills" id="heroPills">
+      <span class="pill">🏡 Casa completa</span>
+      <span class="pill">👤 Hasta 8 huéspedes</span>
+      <span class="pill">🍷 Rodeada de viñedos</span>
+      <span class="pill">🌊 Piscina privada</span>
+    </div>
+  </div>
+  <div class="hero__scroll" id="heroScroll" aria-hidden="true">
+    <div class="scroll-bar"><div class="scroll-fill"></div></div>
+    <span>Explorar</span>
+  </div>
+</section>
+
+<!-- ═══════ STRIP ═══════ -->
+<div class="strip">
+  <div class="container">
+    <div class="strip__grid">
+      <div class="strip__item reveal-up"><span class="strip__num">4</span><span class="strip__label">Recámaras</span></div>
+      <div class="strip__div" aria-hidden="true"></div>
+      <div class="strip__item reveal-up" data-delay="100"><span class="strip__num">8</span><span class="strip__label">Huéspedes</span></div>
+      <div class="strip__div" aria-hidden="true"></div>
+      <div class="strip__item reveal-up" data-delay="200"><span class="strip__num">2ha</span><span class="strip__label">Terreno</span></div>
+      <div class="strip__div" aria-hidden="true"></div>
+      <div class="strip__item reveal-up" data-delay="300"><span class="strip__num">20+</span><span class="strip__label">Viñedos cerca</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ AMENIDADES ═══════ -->
+<section class="section" id="amenidades">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-label">La Casa</span>
+      <h2 class="sec-title reveal-up">Todo lo que<br /><em>necesitas y más.</em></h2>
+      <p class="sec-desc reveal-up">Diseñada para que no te falte nada. Desde el primer amanecer entre viñedos hasta la última copa en la terraza.</p>
+    </div>
+    <div class="amenidades__grid">
+
+      <div class="amen-card reveal-up" data-delay="0">
+        <div class="amen-card__icon">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M6 36C6 32 8 28 12 26V18C12 13.582 15.582 10 20 10H28C32.418 10 36 13.582 36 18V26C40 28 42 32 42 36V40H6V36Z" stroke="currentColor" stroke-width="1.5"/><path d="M18 26H30M24 10V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>4 Recámaras</h3>
+        <p>Todas con cama king, ropa de cama premium, AC y vista al viñedo. Baño privado en cada habitación.</p>
+      </div>
+
+      <div class="amen-card reveal-up" data-delay="80">
+        <div class="amen-card__icon">
+          <svg viewBox="0 0 48 48" fill="none"><ellipse cx="24" cy="28" rx="16" ry="10" stroke="currentColor" stroke-width="1.5"/><path d="M8 28V34C8 39.523 15.163 44 24 44C32.837 44 40 39.523 40 34V28" stroke="currentColor" stroke-width="1.5"/><path d="M24 18V10M18 12L24 6L30 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Piscina Privada</h3>
+        <p>Piscina infinity con vista panorámica al valle. Climatizada en temporada fría. Camastros incluidos.</p>
+      </div>
+
+      <div class="amen-card reveal-up" data-delay="160">
+        <div class="amen-card__icon">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M10 38V24L24 10L38 24V38H30V30H18V38H10Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Sala &amp; Comedor</h3>
+        <p>Espacios abiertos con techos altos y ventanales al jardín. Comedor para 10, cocina totalmente equipada.</p>
+      </div>
+
+      <div class="amen-card reveal-up" data-delay="0">
+        <div class="amen-card__icon">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M8 34L16 22L24 30L32 18L40 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="6" y="6" width="36" height="36" rx="4" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <h3>Terraza &amp; BBQ</h3>
+        <p>Terraza cubierta con asador de leña, barra de bar exterior y área lounge. Cenas bajo las estrellas.</p>
+      </div>
+
+      <div class="amen-card reveal-up" data-delay="80">
+        <div class="amen-card__icon">
+          <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="1.5"/><path d="M24 14V24L30 28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Check-in Flexible</h3>
+        <p>Llegada desde las 3pm, salida hasta las 12pm. Podemos ajustar horarios con previo acuerdo.</p>
+      </div>
+
+      <div class="amen-card reveal-up" data-delay="160">
+        <div class="amen-card__icon">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M10 16H38V36C38 37.105 37.105 38 36 38H12C10.895 38 10 37.105 10 36V16Z" stroke="currentColor" stroke-width="1.5"/><path d="M6 16H42M20 10H28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>WiFi &amp; Smart TV</h3>
+        <p>Internet 500 Mbps, Smart TV 65" en sala, bocinas Sonos en interiores y terraza.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ GALERÍA ═══════ -->
+<section class="section galeria" id="galeria">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-label">Galería</span>
+      <h2 class="sec-title reveal-up">Un lugar que<br /><em>enamora a primera vista.</em></h2>
+    </div>
+  </div>
+  <div class="gallery-grid">
+    <div class="g-cell g-cell--tall reveal-up">
+      <div class="g-img g-exterior"><span class="g-label">Fachada &amp; Jardín</span></div>
+    </div>
+    <div class="g-cell reveal-up" data-delay="80">
+      <div class="g-img g-pool"><span class="g-label">Piscina Infinity</span></div>
+    </div>
+    <div class="g-cell reveal-up" data-delay="160">
+      <div class="g-img g-interior"><span class="g-label">Sala Principal</span></div>
+    </div>
+    <div class="g-cell g-cell--wide reveal-up" data-delay="80">
+      <div class="g-img g-terraza"><span class="g-label">Terraza &amp; Viñedo</span></div>
+    </div>
+    <div class="g-cell reveal-up" data-delay="160">
+      <div class="g-img g-bedroom"><span class="g-label">Recámara Principal</span></div>
+    </div>
+  </div>
+  <div class="container">
+    <p class="gallery-note reveal-fade">✦ Reemplaza estas celdas con fotos reales de la propiedad — solo cambia el background por background-image:url('tu-foto.jpg')</p>
+  </div>
+</section>
+
+<!-- ═══════ EXPERIENCIA ═══════ -->
+<section class="section" id="experiencia">
+  <div class="container">
+    <div class="experiencia__grid">
+      <div class="reveal-up">
+        <span class="sec-label">La Experiencia</span>
+        <h2 class="exp-title">Más que una casa.<br /><em>Una escapada que recordarás.</em></h2>
+        <p class="exp-body">El Valle de Guadalupe es el destino gastronómico más importante de México. Rodeada de más de 150 bodegas, restaurantes de clase mundial y paisajes que quitan el aliento.</p>
+        <p class="exp-body">A solo 20 minutos de Ensenada y 90 minutos de San Diego. Fácil de llegar, difícil de abandonar.</p>
+        <div class="exp-tags">
+          <span>🍷 Ruta del vino</span>
+          <span>🍽️ Restaurantes top 50</span>
+          <span>🌄 Atardeceres únicos</span>
+          <span>🫒 Aceite de oliva artesanal</span>
+          <span>🎭 Festivales todo el año</span>
+          <span>🏖️ Playa a 25 min</span>
+        </div>
+      </div>
+      <div class="reveal-up" data-delay="150">
+        <div class="exp-card">
+          <div class="exp-card__img"></div>
+          <div class="exp-card__body">
+            <h3>Valle de Guadalupe</h3>
+            <p>Reconocido por Wine Spectator entre los mejores destinos vinícolas del mundo.</p>
+            <ul class="exp-list">
+              <li>→ 150+ bodegas y viñedos</li>
+              <li>→ Clima mediterráneo ideal</li>
+              <li>→ Temporada alta: Abr — Nov</li>
+              <li>→ Ensenada a 20 minutos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ RESEÑAS ═══════ -->
+<section class="section resenas" id="resenas">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-label">Huéspedes</span>
+      <h2 class="sec-title reveal-up">Lo que dicen<br /><em>quienes ya vivieron esto.</em></h2>
+    </div>
+    <div class="resenas__grid">
+      <div class="resena-card reveal-up" data-delay="0">
+        <div class="resena-card__stars">★★★★★</div>
+        <blockquote>"Quedamos completamente enamorados. La piscina con vista al viñedo al atardecer es algo que no tiene precio. Ya reservamos para el regreso."</blockquote>
+        <div class="resena-author"><div class="resena-avatar">AC</div><div><strong>Ana &amp; Carlos</strong><span>Ciudad de México · Julio 2025</span></div></div>
+      </div>
+      <div class="resena-card resena-card--accent reveal-up" data-delay="120">
+        <div class="resena-card__stars">★★★★★</div>
+        <blockquote>"La casa supera las fotos. Anfitrión increíble. Fuimos a 6 bodegas en dos días y terminamos cada noche en la terraza con una botella del valle. Perfecto."</blockquote>
+        <div class="resena-author"><div class="resena-avatar">RG</div><div><strong>Rodrigo García</strong><span>Guadalajara · Octubre 2025</span></div></div>
+      </div>
+      <div class="resena-card reveal-up" data-delay="240">
+        <div class="resena-card__stars">★★★★★</div>
+        <blockquote>"Vinimos para el cumpleaños de mi esposa con 7 amigos. La casa tiene todo: cocina enorme, muchas áreas para convivir y silencio absoluto por las noches."</blockquote>
+        <div class="resena-author"><div class="resena-avatar">LM</div><div><strong>Laura Mendoza</strong><span>Monterrey · Marzo 2025</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CONTACTO ═══════ -->
+<section class="section" id="contacto">
+  <div class="container">
+    <div class="contacto__grid">
+
+      <div class="reveal-up">
+        <span class="sec-label">Reservaciones</span>
+        <h2 class="contacto__title">¿Cuándo es<br /><em>tu escapada?</em></h2>
+        <p class="contacto__desc">Escríbenos con tus fechas y número de huéspedes. Respondemos en menos de 4 horas.</p>
+
+        <div class="contacto__info">
+          <a href="https://wa.me/526641234567" class="contact-row" target="_blank" rel="noopener">
+            <span class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </span>
+            <div><strong>WhatsApp</strong><span>+52 664 123 4567</span></div>
+          </a>
+          <a href="mailto:reservas@casavina.mx" class="contact-row">
+            <span class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M3 8L10.89 13.26C11.2212 13.4793 11.6056 13.5963 12 13.5963C12.3944 13.5963 12.7788 13.4793 13.11 13.26L21 8M5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V17C3 18.1046 3.89543 19 5 19Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div><strong>Email</strong><span>reservas@casavina.mx</span></div>
+          </a>
+          <div class="contact-row contact-row--static">
+            <span class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+            </span>
+            <div><strong>Ubicación</strong><span>Valle de Guadalupe, Ensenada, B.C.</span></div>
+          </div>
+        </div>
+
+        <div class="rates-box">
+          <div class="rates-box__header">Tarifas desde</div>
+          <div class="rates-box__body">
+            <div class="rate-row"><span>Lun — Jue</span><strong>$6,500 MXN / noche</strong></div>
+            <div class="rate-row"><span>Vie — Dom</span><strong>$9,500 MXN / noche</strong></div>
+            <div class="rate-row"><span>Mínimo 2 noches</span><strong>T. alta: 3 noches</strong></div>
+          </div>
+          <p class="rates-note">* Tarifas para hasta 6 personas. Huéspedes adicionales con costo.</p>
+        </div>
+      </div>
+
+      <div class="reveal-up" data-delay="150">
+        <form class="booking-form" id="bookingForm" novalidate>
+          <h3>Consulta Disponibilidad</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre completo</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="telefono">WhatsApp / Teléfono</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="+52 664 000 0000" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="checkin">Check-in</label>
+              <input type="date" id="checkin" name="checkin" required />
+            </div>
+            <div class="form-group">
+              <label for="checkout">Check-out</label>
+              <input type="date" id="checkout" name="checkout" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="huespedes">Número de huéspedes</label>
+            <select id="huespedes" name="huespedes">
+              <option value="">Seleccionar...</option>
+              <option value="2">2 personas</option>
+              <option value="3-4">3 — 4 personas</option>
+              <option value="5-6">5 — 6 personas</option>
+              <option value="7-8">7 — 8 personas</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="mensaje">¿Algo especial que debamos saber?</label>
+            <textarea id="mensaje" name="mensaje" rows="3" placeholder="Celebración especial, mascotas, necesidades específicas..."></textarea>
+          </div>
+          <button type="submit" class="btn btn--gold btn--full">
+            <span>Enviar Solicitud</span>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="form-note">Te respondemos en menos de 4 horas · Sin compromiso</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <a href="#hero" class="footer__logo">Casa Viña<span>.</span></a>
+        <p>Una experiencia de lujo en el corazón del Valle de Guadalupe. Donde el vino, la naturaleza y el descanso se encuentran.</p>
+      </div>
+      <div class="footer__links">
+        <ul>
+          <li><a href="#amenidades">La Casa</a></li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a href="#experiencia">El Valle</a></li>
+          <li><a href="#resenas">Reseñas</a></li>
+          <li><a href="#contacto">Reservar</a></li>
+        </ul>
+      </div>
+      <div class="footer__contact">
+        <a href="https://wa.me/526641234567" target="_blank" rel="noopener">+52 664 123 4567</a>
+        <a href="mailto:reservas@casavina.mx">reservas@casavina.mx</a>
+        <span>Valle de Guadalupe, B.C. México</span>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 Casa Viña. Todos los derechos reservados.</p>
+      <p>Diseñado por <a href="#">Huella Digital</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+'use strict';
+const qs  = (s,el=document) => el.querySelector(s);
+const qsa = (s,el=document) => [...el.querySelectorAll(s)];
+
+/* NAV */
+window.addEventListener('scroll',()=>{
+  qs('#nav').classList.toggle('is-scrolled', window.scrollY > 24);
+},{passive:true});
+
+const burger = qs('#navBurger');
+const mMenu  = qs('#mobileMenu');
+if(burger && mMenu){
+  burger.addEventListener('click',()=>{
+    const open = mMenu.classList.toggle('is-open');
+    burger.classList.toggle('is-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  qsa('.mob-link',mMenu).forEach(l => l.addEventListener('click',()=>{
+    mMenu.classList.remove('is-open');
+    burger.classList.remove('is-open');
+    document.body.style.overflow='';
+  }));
+}
+
+/* SMOOTH SCROLL */
+qsa('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = qs(a.getAttribute('href'));
+    if(!t) return;
+    e.preventDefault();
+    window.scrollTo({top: t.getBoundingClientRect().top + window.scrollY - 68, behavior:'smooth'});
+  });
+});
+
+/* HERO ENTRANCE */
+setTimeout(()=>{
+  ['tl1','tl2','tl3'].forEach((id,i)=>{
+    setTimeout(()=> qs('#'+id)?.classList.add('is-visible'), i*160);
+  });
+  [
+    ['heroEyebrow', 500],
+    ['heroSub',     650],
+    ['heroActions', 780],
+    ['heroPills',   900],
+    ['heroScroll', 1100],
+  ].forEach(([id, delay])=>{
+    setTimeout(()=>{ const el=qs('#'+id); if(el){el.style.opacity='1';el.classList.add('is-visible');} }, delay);
+  });
+}, 80);
+
+/* SCROLL REVEALS */
+const revealObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting) return;
+    e.target.classList.add('is-visible');
+    revealObs.unobserve(e.target);
+  });
+},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+qsa('.reveal-up,.reveal-fade').forEach(el=>revealObs.observe(el));
+
+/* SCROLL PROGRESS */
+const bar = Object.assign(document.createElement('div'),{
+  style:'position:fixed;top:0;left:0;height:2px;width:0%;background:var(--gold);z-index:10000;transition:width .1s linear;pointer-events:none;'
+});
+document.body.appendChild(bar);
+window.addEventListener('scroll',()=>{
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  bar.style.width=(total>0?(window.scrollY/total)*100:0)+'%';
+},{passive:true});
+
+/* GALLERY LIGHTBOX */
+qsa('.g-cell').forEach(cell=>{
+  cell.style.cursor='zoom-in';
+  cell.addEventListener('click',()=>{
+    const label = cell.querySelector('.g-label')?.textContent||'';
+    const bg    = getComputedStyle(cell.querySelector('.g-img')).background;
+    const ov = document.createElement('div');
+    ov.style.cssText='position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;cursor:zoom-out;animation:fadeIn .3s ease';
+    const box = document.createElement('div');
+    box.style.cssText=`width:min(90vw,880px);height:min(60vh,560px);border-radius:20px;background:${bg};display:flex;align-items:flex-end;padding:24px;box-shadow:0 32px 80px rgba(0,0,0,.7)`;
+    const lbl = document.createElement('span');
+    lbl.textContent=label;
+    lbl.style.cssText='font-family:monospace;font-size:.8rem;color:rgba(255,255,255,.7);background:rgba(0,0,0,.4);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:6px 16px';
+    box.appendChild(lbl); ov.appendChild(box); document.body.appendChild(ov);
+    const close=()=>ov.remove();
+    ov.addEventListener('click',close);
+    document.addEventListener('keydown',function h(e){if(e.key==='Escape'){close();document.removeEventListener('keydown',h);}});
+  });
+});
+if(!qs('#giStyle')){const s=document.createElement('style');s.id='giStyle';s.textContent='@keyframes fadeIn{from{opacity:0}to{opacity:1}}';document.head.appendChild(s);}
+
+/* FORM */
+const form = qs('#bookingForm');
+if(form){
+  const today = new Date().toISOString().split('T')[0];
+  const ci = qs('#checkin',form), co = qs('#checkout',form);
+  if(ci) ci.min = today;
+  if(co) co.min = today;
+  ci?.addEventListener('change',()=>{ if(co && ci.value) co.min=ci.value; });
+
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    const d  = Object.fromEntries(new FormData(form));
+    if(!d.nombre?.trim()||!d.email?.trim()){
+      showMsg(form,'Por favor completa nombre y email.','#ff6b6b'); return;
+    }
+    const msg = [
+      'Hola, me interesa rentar *Casa Viña*:',
+      `Nombre: ${d.nombre}`,
+      `Email: ${d.email}`,
+      d.telefono  ? `Tel: ${d.telefono}`           : null,
+      d.checkin   ? `Check-in: ${d.checkin}`        : null,
+      d.checkout  ? `Check-out: ${d.checkout}`      : null,
+      d.huespedes ? `Huéspedes: ${d.huespedes}`     : null,
+      d.mensaje?.trim() ? `Mensaje: ${d.mensaje.trim()}` : null,
+    ].filter(Boolean).join('\n');
+    window.open(`https://wa.me/526641234567?text=${encodeURIComponent(msg)}`,'_blank','noopener');
+    showMsg(form,'¡Gracias! Abrimos WhatsApp para confirmar tu solicitud.','var(--gold)');
+    setTimeout(()=>{ form.reset(); qs('.form-msg',form)?.remove(); }, 6000);
+  });
+}
+
+function showMsg(form,text,color){
+  qs('.form-msg',form)?.remove();
+  const p=document.createElement('p');
+  p.className='form-msg';p.textContent=text;
+  p.style.cssText=`text-align:center;font-size:.83rem;margin-top:12px;color:${color}`;
+  form.appendChild(p);
+}
+</script>
+</body>
+</html>
