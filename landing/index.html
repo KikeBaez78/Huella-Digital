@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Casa Viña — Tu refugio de lujo en el corazón del Valle de Guadalupe. Renta una experiencia única entre viñedos, gastronomía y naturaleza." />
+  <title>Casa Viña — Valle de Guadalupe</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ───── NOISE ───── -->
+  <div class="noise" aria-hidden="true"></div>
+
+  <!-- ───── WHATSAPP FLOAT ───── -->
+  <a href="https://wa.me/526641234567?text=Hola%2C%20me%20interesa%20rentar%20Casa%20Vi%C3%B1a%20en%20Valle%20de%20Guadalupe"
+     class="wa-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    <span>Reservar</span>
+  </a>
+
+  <!-- ═══════════════════════════════════════════════════
+       NAV
+  ═══════════════════════════════════════════════════════ -->
+  <nav class="nav" id="nav">
+    <div class="nav__wrap">
+      <a href="#hero" class="nav__logo">Casa Viña<span>.</span></a>
+
+      <ul class="nav__links">
+        <li><a href="#amenidades">Amenidades</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#experiencia">Experiencia</a></li>
+        <li><a href="#contacto">Reservar</a></li>
+      </ul>
+
+      <a href="#contacto" class="btn btn--gold nav__cta">Reservar Ahora</a>
+
+      <button class="nav__burger" id="navBurger" aria-label="Menú" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul>
+      <li><a href="#amenidades" class="mob-link">Amenidades</a></li>
+      <li><a href="#galeria"    class="mob-link">Galería</a></li>
+      <li><a href="#experiencia" class="mob-link">Experiencia</a></li>
+      <li><a href="#resenas"    class="mob-link">Reseñas</a></li>
+      <li><a href="#contacto"   class="mob-link mob-link--cta">Reservar →</a></li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero__bg" aria-hidden="true">
+      <div class="hero__gradient"></div>
+      <div class="hero__vines" aria-hidden="true"></div>
+    </div>
+
+    <div class="hero__content container">
+      <div class="hero__eyebrow reveal-fade">
+        <span class="eyebrow-line"></span>
+        <span>Valle de Guadalupe, Baja California</span>
+        <span class="eyebrow-line"></span>
+      </div>
+
+      <h1 class="hero__title">
+        <span class="tl reveal-line">Tu refugio</span>
+        <span class="tl tl--serif reveal-line">en el corazón</span>
+        <span class="tl reveal-line">del vino.</span>
+      </h1>
+
+      <p class="hero__sub reveal-fade">
+        Una casa diseñada para desconectar, con vista a los viñedos,<br class="d-none" />
+        piscina privada y todo el Valle a tu puerta.
+      </p>
+
+      <div class="hero__actions reveal-fade">
+        <a href="#contacto" class="btn btn--gold btn--lg">
+          <span>Consultar Disponibilidad</span>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#galeria" class="btn btn--ghost btn--lg">Ver la Casa</a>
+      </div>
+
+      <div class="hero__pills reveal-fade">
+        <span class="pill">🏡 Casa completa</span>
+        <span class="pill">👤 Hasta 8 huéspedes</span>
+        <span class="pill">🍷 Rodeada de viñedos</span>
+        <span class="pill">🌊 Piscina privada</span>
+      </div>
+    </div>
+
+    <div class="hero__scroll" aria-hidden="true">
+      <div class="scroll-bar"><div class="scroll-fill"></div></div>
+      <span>Explorar</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       INTRO STRIP
+  ═══════════════════════════════════════════════════════ -->
+  <div class="strip">
+    <div class="container">
+      <div class="strip__grid">
+        <div class="strip__item reveal-up">
+          <span class="strip__num">4</span>
+          <span class="strip__label">Recámaras</span>
+        </div>
+        <div class="strip__div" aria-hidden="true"></div>
+        <div class="strip__item reveal-up" data-delay="100">
+          <span class="strip__num">8</span>
+          <span class="strip__label">Huéspedes</span>
+        </div>
+        <div class="strip__div" aria-hidden="true"></div>
+        <div class="strip__item reveal-up" data-delay="200">
+          <span class="strip__num">2ha</span>
+          <span class="strip__label">Terreno</span>
+        </div>
+        <div class="strip__div" aria-hidden="true"></div>
+        <div class="strip__item reveal-up" data-delay="300">
+          <span class="strip__num">20+</span>
+          <span class="strip__label">Viñedos cerca</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       AMENIDADES
+  ═══════════════════════════════════════════════════════ -->
+  <section class="section amenidades" id="amenidades">
+    <div class="container">
+      <div class="sec-header">
+        <span class="sec-label">La Casa</span>
+        <h2 class="sec-title reveal-up">Todo lo que<br /><em>necesitas y más.</em></h2>
+        <p class="sec-desc reveal-up">
+          Diseñada para que no te falte nada. Desde el primer amanecer entre viñedos
+          hasta la última copa en la terraza.
+        </p>
+      </div>
+
+      <div class="amenidades__grid">
+
+        <div class="amen-card reveal-up" data-delay="0">
+          <div class="amen-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M6 36C6 32 8 28 12 26V18C12 13.582 15.582 10 20 10H28C32.418 10 36 13.582 36 18V26C40 28 42 32 42 36V40H6V36Z" stroke="currentColor" stroke-width="1.5"/><path d="M18 26H30M24 10V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>4 Recámaras</h3>
+          <p>Todas con cama king, ropa de cama premium, AC y vista al viñedo. Baño privado en cada habitación.</p>
+        </div>
+
+        <div class="amen-card reveal-up" data-delay="80">
+          <div class="amen-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none"><ellipse cx="24" cy="28" rx="16" ry="10" stroke="currentColor" stroke-width="1.5"/><path d="M8 28V34C8 39.523 15.163 44 24 44C32.837 44 40 39.523 40 34V28" stroke="currentColor" stroke-width="1.5"/><path d="M24 18V10M18 12L24 6L30 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Piscina Privada</h3>
+          <p>Piscina infinity con vista panorámica al valle. Climatizada en temporada fría. Área de camastros incluida.</p>
+        </div>
+
+        <div class="amen-card reveal-up" data-delay="160">
+          <div class="amen-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M10 38V24L24 10L38 24V38H30V30H18V38H10Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Sala &amp; Comedor</h3>
+          <p>Espacios abiertos con techos altos y ventanales al jardín. Comedor para 10 personas, cocina totalmente equipada.</p>
+        </div>
+
+        <div class="amen-card reveal-up" data-delay="0">
+          <div class="amen-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M8 34L16 22L24 30L32 18L40 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="6" y="6" width="36" height="36" rx="4" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <h3>Terraza &amp; BBQ</h3>
+          <p>Terraza cubierta con asador de leña, barra de bar exterior y área lounge. El lugar perfecto para cenas bajo las estrellas.</p>
+        </div>
+
+        <div class="amen-card reveal-up" data-delay="80">
+          <div class="amen-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="1.5"/><path d="M24 14V24L30 28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Check-in Flexible</h3>
+          <p>Llegada desde las 3pm, salida hasta las 12pm. Con previo acuerdo podemos ajustar horarios según disponibilidad.</p>
+        </div>
+
+        <div class="amen-card reveal-up" data-delay="160">
+          <div class="amen-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M10 16H38V36C38 37.105 37.105 38 36 38H12C10.895 38 10 37.105 10 36V16Z" stroke="currentColor" stroke-width="1.5"/><path d="M6 16H42M20 10H28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>WiFi &amp; Smart TV</h3>
+          <p>Internet de alta velocidad (500 Mbps), Smart TV 65" en sala, bocinas Sonos en interiores y terraza.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       GALERÍA
+  ═══════════════════════════════════════════════════════ -->
+  <section class="section galeria" id="galeria">
+    <div class="container">
+      <div class="sec-header">
+        <span class="sec-label">Galería</span>
+        <h2 class="sec-title reveal-up">Un lugar que<br /><em>enamora a primera vista.</em></h2>
+      </div>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="g-cell g-cell--tall reveal-up">
+        <div class="g-img g-exterior">
+          <span class="g-label">Fachada &amp; Jardín</span>
+        </div>
+      </div>
+      <div class="g-cell reveal-up" data-delay="80">
+        <div class="g-img g-pool">
+          <span class="g-label">Piscina Infinity</span>
+        </div>
+      </div>
+      <div class="g-cell reveal-up" data-delay="160">
+        <div class="g-img g-interior">
+          <span class="g-label">Sala Principal</span>
+        </div>
+      </div>
+      <div class="g-cell g-cell--wide reveal-up" data-delay="80">
+        <div class="g-img g-terraza">
+          <span class="g-label">Terraza &amp; Viñedo</span>
+        </div>
+      </div>
+      <div class="g-cell reveal-up" data-delay="160">
+        <div class="g-img g-bedroom">
+          <span class="g-label">Recámara Principal</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <p class="gallery-note reveal-fade">
+        ✦ Reemplaza estas imágenes con fotos reales de la propiedad
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       EXPERIENCIA
+  ═══════════════════════════════════════════════════════ -->
+  <section class="section experiencia" id="experiencia">
+    <div class="container">
+      <div class="experiencia__grid">
+
+        <div class="experiencia__left reveal-up">
+          <span class="sec-label">La Experiencia</span>
+          <h2 class="exp-title">
+            Más que una casa.<br />
+            <em>Una escapada que recordarás.</em>
+          </h2>
+          <p class="exp-body">
+            El Valle de Guadalupe es el destino gastronómico más importante de México.
+            Rodeada de más de 150 bodegas, restaurantes de clase mundial y paisajes
+            que quitan el aliento — Casa Viña es tu base perfecta para explorarlo todo.
+          </p>
+          <p class="exp-body">
+            A solo 20 minutos de Ensenada y 90 minutos de San Diego, el Valle es
+            fácil de llegar y difícil de abandonar.
+          </p>
+          <div class="exp-tags">
+            <span>🍷 Ruta del vino</span>
+            <span>🍽️ Restaurantes top 50</span>
+            <span>🌄 Atardeceres únicos</span>
+            <span>🫒 Aceite de oliva artesanal</span>
+            <span>🎭 Festivales todo el año</span>
+            <span>🏖️ Playa a 25 min</span>
+          </div>
+        </div>
+
+        <div class="experiencia__right reveal-up" data-delay="150">
+          <div class="exp-card">
+            <div class="exp-card__img g-valle" aria-hidden="true"></div>
+            <div class="exp-card__body">
+              <h3>Valle de Guadalupe</h3>
+              <p>El "Napa Valley mexicano" — reconocido por Wine Spectator entre los mejores destinos vinícolas del mundo.</p>
+              <ul class="exp-list">
+                <li>→ 150+ bodegas y viñedos</li>
+                <li>→ Clima mediterráneo ideal</li>
+                <li>→ Temporada alta: Abr — Nov</li>
+                <li>→ Ensenada a 20 minutos</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       RESEÑAS
+  ═══════════════════════════════════════════════════════ -->
+  <section class="section resenas" id="resenas">
+    <div class="container">
+      <div class="sec-header">
+        <span class="sec-label">Huéspedes</span>
+        <h2 class="sec-title reveal-up">Lo que dicen<br /><em>quienes ya vivieron esto.</em></h2>
+      </div>
+
+      <div class="resenas__grid">
+
+        <div class="resena-card reveal-up" data-delay="0">
+          <div class="resena-card__stars">★★★★★</div>
+          <blockquote>
+            "Quedamos completamente enamorados. La piscina con vista al viñedo al atardecer
+            es algo que no tiene precio. Ya reservamos para regreso."
+          </blockquote>
+          <div class="resena-author">
+            <div class="resena-avatar">AC</div>
+            <div>
+              <strong>Ana &amp; Carlos</strong>
+              <span>Ciudad de México · Julio 2025</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="resena-card resena-card--accent reveal-up" data-delay="120">
+          <div class="resena-card__stars">★★★★★</div>
+          <blockquote>
+            "La casa supera las fotos. Espacio impecable, anfitrión increíble.
+            Fuimos a 6 bodegas en dos días y terminamos cada noche en la terraza
+            con una botella del valle. Perfecto."
+          </blockquote>
+          <div class="resena-author">
+            <div class="resena-avatar">RG</div>
+            <div>
+              <strong>Rodrigo García</strong>
+              <span>Guadalajara · Octubre 2025</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="resena-card reveal-up" data-delay="240">
+          <div class="resena-card__stars">★★★★★</div>
+          <blockquote>
+            "Vinimos para el cumpleaños de mi esposa con 7 amigos. La casa tiene
+            todo para un grupo: cocina enorme, muchas áreas para convivir y
+            silencio absoluto por las noches."
+          </blockquote>
+          <div class="resena-author">
+            <div class="resena-avatar">LM</div>
+            <div>
+              <strong>Laura Mendoza</strong>
+              <span>Monterrey · Marzo 2025</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       CONTACTO / RESERVAR
+  ═══════════════════════════════════════════════════════ -->
+  <section class="section contacto" id="contacto">
+    <div class="container">
+      <div class="contacto__grid">
+
+        <div class="contacto__left reveal-up">
+          <span class="sec-label">Reservaciones</span>
+          <h2 class="contacto__title">
+            ¿Cuándo es<br /><em>tu escapada?</em>
+          </h2>
+          <p class="contacto__desc">
+            Escríbenos con tus fechas y número de huéspedes. Respondemos en menos de 4 horas.
+          </p>
+          <div class="contacto__info">
+            <a href="https://wa.me/526641234567" class="contact-row" target="_blank" rel="noopener">
+              <span class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              </span>
+              <div>
+                <strong>WhatsApp</strong>
+                <span>+52 664 123 4567</span>
+              </div>
+            </a>
+            <a href="mailto:reservas@casavina.mx" class="contact-row">
+              <span class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M3 8L10.89 13.26C11.2212 13.4793 11.6056 13.5963 12 13.5963C12.3944 13.5963 12.7788 13.4793 13.11 13.26L21 8M5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V17C3 18.1046 3.89543 19 5 19Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <div>
+                <strong>Email</strong>
+                <span>reservas@casavina.mx</span>
+              </div>
+            </a>
+            <div class="contact-row contact-row--static">
+              <span class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+              </span>
+              <div>
+                <strong>Ubicación</strong>
+                <span>Valle de Guadalupe, Ensenada, B.C.</span>
+              </div>
+            </div>
+          </div>
+          <div class="rates-box">
+            <div class="rates-box__header">
+              <span>Tarifas desde</span>
+            </div>
+            <div class="rates-box__body">
+              <div class="rate-row">
+                <span>Lun — Jue</span>
+                <strong>$6,500 MXN / noche</strong>
+              </div>
+              <div class="rate-row">
+                <span>Vie — Dom</span>
+                <strong>$9,500 MXN / noche</strong>
+              </div>
+              <div class="rate-row">
+                <span>Mínimo 2 noches</span>
+                <strong>Temporada alta: 3 noches</strong>
+              </div>
+            </div>
+            <p class="rates-note">* Tarifas para hasta 6 personas. Huéspedes adicionales con costo extra.</p>
+          </div>
+        </div>
+
+        <div class="contacto__right reveal-up" data-delay="150">
+          <form class="booking-form" id="bookingForm" novalidate>
+            <h3>Consulta Disponibilidad</h3>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="telefono">WhatsApp / Teléfono</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="+52 664 000 0000" />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="checkin">Check-in</label>
+                <input type="date" id="checkin" name="checkin" required />
+              </div>
+              <div class="form-group">
+                <label for="checkout">Check-out</label>
+                <input type="date" id="checkout" name="checkout" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="huespedes">Número de huéspedes</label>
+              <select id="huespedes" name="huespedes">
+                <option value="">Seleccionar...</option>
+                <option value="2">2 personas</option>
+                <option value="3-4">3 — 4 personas</option>
+                <option value="5-6">5 — 6 personas</option>
+                <option value="7-8">7 — 8 personas</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="mensaje">¿Algo especial que debamos saber?</label>
+              <textarea id="mensaje" name="mensaje" rows="4" placeholder="Celebración especial, mascotas, necesidades específicas..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--gold btn--full">
+              <span>Enviar Solicitud</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+
+            <p class="form-note">Te respondemos en menos de 4 horas · Sin compromiso</p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <a href="#hero" class="footer__logo">Casa Viña<span>.</span></a>
+          <p>Una experiencia de lujo en el corazón del Valle de Guadalupe. Donde el vino, la naturaleza y el descanso se encuentran.</p>
+        </div>
+        <div class="footer__links">
+          <ul>
+            <li><a href="#amenidades">La Casa</a></li>
+            <li><a href="#galeria">Galería</a></li>
+            <li><a href="#experiencia">El Valle</a></li>
+            <li><a href="#resenas">Reseñas</a></li>
+            <li><a href="#contacto">Reservar</a></li>
+          </ul>
+        </div>
+        <div class="footer__contact">
+          <a href="https://wa.me/526641234567" target="_blank" rel="noopener">+52 664 123 4567</a>
+          <a href="mailto:reservas@casavina.mx">reservas@casavina.mx</a>
+          <span>Valle de Guadalupe, B.C. México</span>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 Casa Viña. Todos los derechos reservados.</p>
+        <p>Diseñado por <a href="#">Huella Digital</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
