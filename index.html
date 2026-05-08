@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[huella] Digital — El internet trabajando para tu negocio</title>
+  <meta name="description" content="Agencia digital especializada en negocios locales en Tijuana. Sitios web modernos, rediseño web, auditoría digital e IA para micro y pequeñas empresas.">
+
+  <!-- ── Open Graph ── -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://huelladigitaltj.netlify.app/">
+  <meta property="og:title"       content="[huella] Digital — El internet trabajando para tu negocio">
+  <meta property="og:description" content="Sitios web modernos para negocios locales en Tijuana. Entrega en 7–14 días. Cotización gratis por WhatsApp.">
+  <meta property="og:image"       content="https://huelladigitaltj.netlify.app/assets/logo.png">
+  <meta property="og:locale"      content="es_MX">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="[huella] Digital — El internet trabajando para tu negocio">
+  <meta name="twitter:description" content="Sitios web modernos para negocios locales en Tijuana. Entrega en 7–14 días.">
+  <meta name="twitter:image"      content="https://huelladigitaltj.netlify.app/assets/logo.png">
+
+  <!-- ── LocalBusiness Schema ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Huella Digital",
+    "description": "Agencia digital especializada en negocios locales en Tijuana. Sitios web modernos, rediseño web, auditoría digital e IA para micro y pequeñas empresas.",
+    "url": "https://huelladigitaltj.netlify.app/",
+    "telephone": "+526641991538",
+    "email": "hola@huelladigital.mx",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Tijuana",
+      "addressRegion": "Baja California",
+      "addressCountry": "MX"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Tijuana"
+    },
+    "priceRange": "$$",
+    "openingHours": "Mo-Su 00:00-23:59",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+526641991538",
+      "contactType": "customer service",
+      "contactOption": "TollFree",
+      "availableLanguage": "Spanish"
+    },
+    "sameAs": []
+  }
+  </script>
+
+  <link rel="stylesheet" href="assets/tailwind.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" media="(max-width:767px)">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" media="(min-width:768px)">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+
+    .gt {
+      background: linear-gradient(135deg, #22c55e 0%, #3b82f6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .glass {
+      background: rgba(13, 20, 32, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(34,197,94,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34,197,94,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .gb-card {
+      position: relative;
+      border-radius: 1.5rem;
+    }
+    .gb-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(34,197,94,0.4), rgba(59,130,246,0.4));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    @keyframes orbFloat {
+      0%,100% { transform: translate(0,0) scale(1); }
+      33%      { transform: translate(20px,-20px) scale(1.03); }
+      66%      { transform: translate(-15px,15px) scale(0.97); }
+    }
+    .orb  { animation: orbFloat 9s ease-in-out infinite; }
+    .orb2 { animation: orbFloat 9s ease-in-out infinite 4.5s; }
+
+    @keyframes cardFloat {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-14px); }
+    }
+    .float1 { animation: cardFloat 4.5s ease-in-out infinite; }
+    .float2 { animation: cardFloat 4.5s ease-in-out infinite 2.2s; }
+
+    @keyframes pulseDot {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.5; transform:scale(.75); }
+    }
+    .pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(40px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .fu1 { animation: fadeUp .8s ease both; }
+    .fu2 { animation: fadeUp .8s ease .15s both; }
+    .fu3 { animation: fadeUp .8s ease .3s both; }
+    .fu4 { animation: fadeUp .8s ease .45s both; }
+
+    .rev { opacity:0; transform:translateY(36px); transition: opacity .7s ease, transform .7s ease; }
+    .rev.on { opacity:1; transform:translateY(0); }
+
+    .svc-card {
+      transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    }
+    .svc-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(34,197,94,.4) !important;
+      box-shadow: 0 24px 48px rgba(34,197,94,.1);
+    }
+
+    .pf-card {
+      transition: transform .3s ease, border-color .3s ease;
+    }
+    .pf-card:hover { transform:scale(1.025); border-color: rgba(34,197,94,.35) !important; }
+
+    .counter { display:inline-block; }
+
+    ::-webkit-scrollbar { width:5px; }
+    ::-webkit-scrollbar-track { background:#080C14; }
+    ::-webkit-scrollbar-thumb { background:#22c55e; border-radius:3px; }
+
+    html { scroll-behavior:smooth; }
+
+    @media (max-width: 768px) {
+      .glass {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(8, 14, 26, 0.95) !important;
+      }
+      .grid-bg { background-image: none !important; }
+      .orb, .orb2 { animation: none !important; opacity: 0 !important; }
+      .float1 { display: none !important; }
+      .float2 { animation: none !important; }
+      .svc-card, .pf-card { transition: none !important; }
+      .rev {
+        opacity: 0;
+        transform: none !important;
+        transition: opacity .4s ease !important;
+        transition-delay: 0s !important;
+      }
+      .rev.on { opacity: 1 !important; }
+      [style*="transition-delay"] { transition-delay: 0s !important; }
+    }
+  </style>
+</head>
+
+<body class="bg-[#080C14] text-white overflow-x-hidden">
+
+<!-- NAV -->
+<nav id="nav" class="fixed top-0 inset-x-0 z-50 py-4 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+    <a href="#inicio" class="flex items-center gap-2">
+      <img src="assets/logo.png" alt="Huella Digital" class="h-auto w-[195px]"
+           onerror="this.onerror=null;this.style.display='none';document.getElementById('logoText').style.display='flex'">
+      <span id="logoText" class="hidden items-center gap-1 text-lg font-black">
+        <span class="text-white">[</span><span class="gt">huella</span><span class="text-white">]</span><span class="text-gray-300 ml-1">Digital</span>
+      </span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
+      <a href="#servicios"  class="hover:text-white transition-colors">Servicios</a>
+      <a href="#portafolio" class="hover:text-white transition-colors">Portafolio</a>
+      <a href="#proceso"    class="hover:text-white transition-colors">Proceso</a>
+      <a href="#nosotros"   class="hover:text-white transition-colors">Nosotros</a>
+      <a href="https://wa.me/526641991538?text=Hola%2C%20quiero%20información%20sobre%20sus%20servicios"
+         target="_blank"
+         class="bg-green-500 hover:bg-green-400 text-black font-bold px-5 py-2.5 rounded-full transition-all hover:scale-105 shadow-lg shadow-green-500/20">
+        Hablemos →
+      </a>
+    </div>
+    <button id="ham" class="md:hidden text-gray-300 hover:text-white p-1" aria-label="Menú">
+      <svg id="hamIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+  <div id="mob" class="hidden md:hidden mx-4 mt-2 glass rounded-2xl p-6 shadow-2xl">
+    <nav class="flex flex-col gap-4 text-base font-medium text-gray-300">
+      <a href="#servicios"  class="hover:text-green-400 transition-colors">Servicios</a>
+      <a href="#portafolio" class="hover:text-green-400 transition-colors">Portafolio</a>
+      <a href="#proceso"    class="hover:text-green-400 transition-colors">Proceso</a>
+      <a href="#nosotros"   class="hover:text-green-400 transition-colors">Nosotros</a>
+      <a href="https://wa.me/526641991538?text=Hola%2C%20quiero%20información%20sobre%20sus%20servicios"
+         target="_blank"
+         class="bg-green-500 text-black font-bold px-5 py-3 rounded-full text-center">
+        Hablemos por WhatsApp →
+      </a>
+    </nav>
+  </div>
+</nav>
+
+
+<!-- HERO -->
+<section id="inicio" class="relative min-h-screen flex items-center grid-bg overflow-hidden pt-20">
+  <div class="orb  pointer-events-none absolute top-1/4  left-1/4  w-[500px] h-[500px] bg-green-500/8  rounded-full blur-[100px]"></div>
+  <div class="orb2 pointer-events-none absolute bottom-1/4 right-1/4  w-[400px] h-[400px] bg-blue-500/8   rounded-full blur-[100px]"></div>
+  <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#080C14]"></div>
+
+  <div class="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-16 items-center w-full relative">
+    <div>
+      <div class="fu1 inline-flex items-center gap-2 glass rounded-full px-4 py-2 text-sm text-green-400 mb-8 border border-green-500/20">
+        <span class="pulse-dot w-2 h-2 bg-green-400 rounded-full"></span>
+        <span id="scrambleText">El internet trabajando para tu negocio</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-none tracking-tight mb-6">
+        Tu negocio en Google<br>
+        <span class="gt">en 14 días.</span>
+      </h1>
+      <p class="fu3 text-gray-400 text-lg md:text-xl leading-relaxed mb-10 max-w-lg">
+        Construimos la presencia digital de negocios locales en Tijuana con
+        sitios <span class="text-white font-semibold">modernos, rápidos y que realmente convierten</span>
+        visitantes en clientes.
+      </p>
+      <div class="fu4 flex flex-wrap gap-4 mb-12">
+        <a href="https://wa.me/526641991538?text=Hola%2C%20quiero%20una%20presencia%20digital%20para%20mi%20negocio"
+           target="_blank"
+           class="flex items-center gap-2 bg-green-500 hover:bg-green-400 text-black font-bold px-8 py-4 rounded-full text-lg transition-all hover:scale-105 shadow-xl shadow-green-500/25">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L.057 23.267a.5.5 0 00.609.657l5.538-1.453A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.887a9.874 9.874 0 01-5.031-1.381l-.361-.214-3.737.98.999-3.642-.235-.374A9.861 9.861 0 012.113 12C2.113 6.539 6.539 2.113 12 2.113S21.887 6.539 21.887 12 17.461 21.887 12 21.887z"/>
+          </svg>
+          Cotización gratis en WhatsApp
+        </a>
+        <a href="#portafolio"
+           class="flex items-center gap-2 glass border border-white/10 hover:border-green-500/40 font-semibold px-8 py-4 rounded-full text-lg transition-all hover:scale-105">
+          Ver portafolio
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </a>
+      </div>
+      <div class="fu4 flex flex-wrap gap-4 text-sm text-gray-400">
+        <span class="flex items-center gap-1.5"><span class="text-green-400">✓</span> Sin contratos largos</span>
+        <span class="flex items-center gap-1.5"><span class="text-green-400">✓</span> Entrega en 7–14 días</span>
+        <span class="flex items-center gap-1.5"><span class="text-green-400">✓</span> Soporte incluido</span>
+      </div>
+    </div>
+
+    <div class="hidden md:flex justify-center items-center">
+      <div class="float1 relative">
+        <div class="gb-card glass p-4 w-[360px] shadow-2xl">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-3 h-3 rounded-full bg-red-400/70"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-400/70"></span>
+            <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
+            <div class="flex-1 bg-white/5 rounded-full px-3 py-1 text-xs text-gray-500 ml-2">tunegocio.com</div>
+          </div>
+          <div class="rounded-xl bg-[#0a0f1a] p-5 space-y-3">
+            <div class="h-4 w-3/4 rounded-full bg-green-500/35"></div>
+            <div class="h-3 w-full rounded-full bg-white/8"></div>
+            <div class="h-3 w-5/6 rounded-full bg-white/8"></div>
+            <div class="flex gap-2 pt-1">
+              <div class="h-8 w-28 rounded-full bg-green-500/50"></div>
+              <div class="h-8 w-20 rounded-full bg-white/10"></div>
+            </div>
+            <div class="grid grid-cols-3 gap-2 pt-2">
+              <div class="h-16 rounded-xl bg-white/5"></div>
+              <div class="h-16 rounded-xl bg-white/5"></div>
+              <div class="h-16 rounded-xl bg-white/5"></div>
+            </div>
+          </div>
+        </div>
+        <div class="float2 absolute -bottom-8 -left-12 glass rounded-2xl p-4 border border-green-500/20 shadow-xl">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-green-500/20 flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-[11px] text-gray-400">Visitas hoy</p>
+              <p class="text-white font-bold text-sm">+247 visitantes</p>
+            </div>
+          </div>
+        </div>
+        <div class="absolute -top-8 -right-8 glass rounded-2xl p-3 border border-blue-500/20 shadow-xl">
+          <div class="flex items-center gap-2">
+            <span class="text-xl">🎯</span>
+            <div>
+              <p class="text-white font-semibold text-xs">¡Nueva reserva!</p>
+              <p class="text-gray-400 text-[11px]">hace 2 minutos</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-600 text-xs">
+    <span>scroll</span>
+    <div class="w-px h-10 bg-gradient-to-b from-gray-600 to-transparent"></div>
+  </div>
+</section>
+
+
+<!-- ESTADÍSTICAS -->
+<section class="py-28">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 rev">
+      <p class="text-green-400 text-sm font-semibold tracking-widest uppercase mb-3">La realidad digital</p>
+      <h2 class="text-4xl md:text-5xl font-black mb-5">
+        ¿Tu negocio existe<br><span class="gt">en internet?</span>
+      </h2>
+      <p class="text-gray-400 text-xl max-w-2xl mx-auto">
+        Tus clientes te buscan en Google antes de visitarte. Si no apareces, alguien más se lleva la venta.
+      </p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="rev glass rounded-3xl p-8 border border-green-500/10 hover:border-green-500/25 transition-colors" style="transition-delay:.0s">
+        <div class="text-6xl font-black gt mb-4 count-up" data-target="87" data-suffix="%">0%</div>
+        <h3 class="text-xl font-bold text-white mb-3">Buscan en Google primero</h3>
+        <p class="text-gray-400 leading-relaxed">De los consumidores investiga en internet antes de visitar cualquier negocio local. Tu presencia digital es tu primera impresión.</p>
+      </div>
+      <div class="rev glass rounded-3xl p-8 border border-blue-500/10 hover:border-blue-500/25 transition-colors" style="transition-delay:.1s">
+        <div class="text-6xl font-black gt mb-4 count-up" data-target="75" data-suffix="%">0%</div>
+        <h3 class="text-xl font-bold text-white mb-3">Juzgan por el diseño</h3>
+        <p class="text-gray-400 leading-relaxed">De los usuarios juzga la credibilidad de un negocio por su sitio web. Un diseño anticuado aleja clientes antes de que te contacten.</p>
+      </div>
+      <div class="rev glass rounded-3xl p-8 border border-green-500/10 hover:border-green-500/25 transition-colors" style="transition-delay:.2s">
+        <div class="text-6xl font-black gt mb-4 count-up" data-target="3" data-suffix=" seg">0 seg</div>
+        <h3 class="text-xl font-bold text-white mb-3">Para decidir si se quedan</h3>
+        <p class="text-gray-400 leading-relaxed">Tienes 3 segundos para capturar la atención de un visitante. Si tu sitio es lento o confuso, se van con la competencia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SERVICIOS -->
+<section id="servicios" class="py-28 relative">
+  <div class="absolute inset-0 grid-bg opacity-60 pointer-events-none"></div>
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="text-center mb-16 rev">
+      <p class="text-green-400 text-sm font-semibold tracking-widest uppercase mb-3">Lo que hacemos</p>
+      <h2 class="text-4xl md:text-5xl font-black mb-5">
+        Servicios diseñados<br><span class="gt">para crecer</span>
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+
+      <div class="svc-card rev glass rounded-3xl p-8 border border-white/5" style="transition-delay:.0s">
+        <div class="w-14 h-14 rounded-2xl bg-green-500/12 flex items-center justify-center mb-6">
+          <svg class="w-7 h-7 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <div class="flex items-start justify-between mb-4">
+          <h3 class="text-2xl font-bold">Sitio Web desde Cero</h3>
+          <span class="text-[11px] font-bold bg-green-500/15 text-green-400 border border-green-500/25 px-3 py-1 rounded-full">Popular</span>
+        </div>
+        <p class="text-gray-400 mb-6 leading-relaxed">Diseñamos y desarrollamos tu sitio web profesional desde la idea hasta el lanzamiento. Moderno, rápido y optimizado para convertir visitantes en clientes reales.</p>
+        <ul class="space-y-3 text-sm text-gray-300">
+          <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-green-500/15 flex items-center justify-center flex-shrink-0 text-green-400 text-xs">✓</span> Diseño 100% personalizado a tu marca</li>
+          <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-green-500/15 flex items-center justify-center flex-shrink-0 text-green-400 text-xs">✓</span> Optimizado para móviles y Google</li>
+          <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-green-500/15 flex items-center justify-center flex-shrink-0 text-green-400 text-xs">✓</span> WhatsApp + formulario de contacto integrado</li>
+          <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-green-500/15 flex items-center justify-center flex-shrink-0 text-green-400 text-xs">✓</span> Entrega en 7–14 días hábiles</li>
+        </ul>
+        <p class="text-gray-500 text-sm mt-4">Desde $4,500 MXN — cotización sin costo</p>
+      </div>
+
+      <div class="svc-card rev glass rounded-3xl p-8 border border-white/5" style="transition-delay:.1s">
+        <div class="w-14 h-14 rounded-2xl bg-blue-500/12 flex items-center justify-center mb-6">
+          <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold mb-4">Rediseño Web</h3>
+        <p class="text-gray-400 mb-6 leading-relaxed">¿Tienes un sitio que se ve como del 2010? Lo transformamos por completo. Mismo negocio, imagen renovada que genera confianza y ventas desde el primer clic.</p>
+        <ul class="space-y-3 text-sm text-gray-300">
+          <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-blue-500/15 flex items-center justify-center flex-shrink-0 text-blue-400 text-xs">✓</span> Análisis completo de tu sitio actual</li>
+          <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-blue-500/15 flex items-center justify-center flex-shrink-0 text-blue-400 text-xs">✓</span> Nuevo diseño moderno y rápido</li>
+          <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-blue-500/15 flex items-center justify-center flex-shrink-0 text-blue-400 text-xs">✓</span> Migración de todo tu contenido</li>
+          <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-blue-500/15 flex items-center justify-center flex-shrink-0 text-blue-400 text-xs">✓</span> Sin perder posicionamiento en Google</li>
+        </ul>
+        <p class="text-gray-500 text-sm mt-4">Desde $3,500 MXN — cotización sin costo</p>
+      </div>
+
+      <div class="svc-card rev glass rounded-3xl p-8 border border-white/5" style="transition-delay:.2s">
+        <div class="w-14 h-14 rounded-2xl bg-green-500/12 flex items-center justify-center mb-6">
+          <svg class="w-7 h-7 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold mb-4">Auditoría Digital</h3>
+        <p class="text-gray-400 mb-6 leading-relaxed">¿No sabes por qué tu sitio no vende? Hacemos un diagnóstico completo de tu presencia digital y te entregamos un plan de acción claro y priorizado.</p>
+        <ul class="space-y-3 text-sm text-gray-300">
+          <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-green-500/15 flex items-center justify-center flex-shrink-0 text-green-400 text-xs">✓</span> Revisión de velocidad y rendimiento</li>
+          <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-green-500/15 flex items-center justify-center flex-shrink-0 text-green-400 text-xs">✓</span> Análisis SEO y visibilidad en Google</li>
+          <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-green-500/15 flex items-center justify-center flex-shrink-0 text-green-400 text-xs">✓</span> Reporte detallado con prioridades</li>
+          <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-green-500/15 flex items-center justify-center flex-shrink-0 text-green-400 text-xs">✓</span> Videollamada para explicar resultados</li>
+        </ul>
+        <p class="text-gray-500 text-sm mt-4">Desde $1,500 MXN — cotización sin costo</p>
+      </div>
+
+      <div class="svc-card rev glass rounded-3xl p-8 border border-white/5" style="transition-delay:.3s">
+        <div class="w-14 h-14 rounded-2xl bg-blue-500/12 flex items-center justify-center mb-6">
+          <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold mb-4">IA y Tecnología</h3>
+        <p class="text-gray-400 mb-6 leading-relaxed">Lleva tu negocio al siguiente nivel con inteligencia artificial. Automatiza respuestas, atiende clientes 24/7 y toma decisiones con datos reales.</p>
+        <ul class="space-y-3 text-sm text-gray-300">
+          <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-blue-500/15 flex items-center justify-center flex-shrink-0 text-blue-400 text-xs">✓</span> Chatbot inteligente para WhatsApp</li>
+          <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-blue-500/15 flex items-center justify-center flex-shrink-0 text-blue-400 text-xs">✓</span> Automatización de respuestas comunes</li>
+          <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-blue-500/15 flex items-center justify-center flex-shrink-0 text-blue-400 text-xs">✓</span> Dashboard de métricas de tu negocio</li>
+          <li class="flex items-center gap-3"><span class="w-5 h-5 rounded-full bg-blue-500/15 flex items-center justify-center flex-shrink-0 text-blue-400 text-xs">✓</span> Asesoría personalizada en herramientas IA</li>
+        </ul>
+        <p class="text-gray-500 text-sm mt-4">Desde $8,000 MXN — cotización sin costo</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- TESTIMONIOS -->
+<section class="py-20 px-4 relative" style="background:rgba(8,14,26,0.6);">
+  <div class="max-w-6xl mx-auto">
+    <p class="text-green-400 text-xs font-bold uppercase tracking-widest text-center mb-3">Clientes reales</p>
+    <h2 class="text-3xl md:text-4xl font-black text-center text-white mb-12">Lo que dicen nuestros <span class="gt">clientes</span></h2>
+    <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+
+      <div class="rev glass gb-card rounded-3xl p-8 border border-white/5">
+        <div class="flex gap-1 mb-4 text-yellow-400 text-sm">★★★★★</div>
+        <p class="text-gray-300 text-sm leading-relaxed mb-6">"En 10 días tuve mi sitio y la primera semana me llegaron 3 clientes por WhatsApp."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-green-500/20 border border-green-500/30 flex items-center justify-center text-green-400 font-bold text-sm">CM</div>
+          <div>
+            <p class="text-white font-semibold text-sm">Carlos M.</p>
+            <p class="text-gray-500 text-xs">Antrax Cerrajería</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rev glass gb-card rounded-3xl p-8 border border-white/5">
+        <div class="flex gap-1 mb-4 text-yellow-400 text-sm">★★★★★</div>
+        <p class="text-gray-300 text-sm leading-relaxed mb-6">"El diseño superó mis expectativas. Mis clientes me dicen que el sitio se ve muy profesional."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-green-500/20 border border-green-500/30 flex items-center justify-center text-green-400 font-bold text-sm">SR</div>
+          <div>
+            <p class="text-white font-semibold text-sm">Sofía R.</p>
+            <p class="text-gray-500 text-xs">Iron Gym Tijuana</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- PORTAFOLIO -->
+<section id="portafolio" class="py-28">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 rev">
+      <p class="text-green-400 text-sm font-semibold tracking-widest uppercase mb-3">Nuestro trabajo</p>
+      <h2 class="text-4xl md:text-5xl font-black mb-5">
+        Sitios que<br><span class="gt">generan resultados</span>
+      </h2>
+      <p class="text-gray-400 text-xl max-w-2xl mx-auto">
+        Cada proyecto es diseñado a la medida del negocio. Aquí una muestra de lo que podemos crear para ti.
+      </p>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-3 mb-10">
+      <button onclick="filterPortfolio('all')"      class="filter-btn active-filter px-5 py-2 rounded-full text-sm font-semibold transition-all" data-filter="all">Todos</button>
+      <button onclick="filterPortfolio('fitness')"  class="filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all" data-filter="fitness">Fitness</button>
+      <button onclick="filterPortfolio('tattoo')"   class="filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all" data-filter="tattoo">Tatuajes</button>
+      <button onclick="filterPortfolio('servicios')" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all" data-filter="servicios">Servicios</button>
+      <button onclick="filterPortfolio('telcel')"   class="filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all" data-filter="telcel">Telcel</button>
+    </div>
+
+    <div id="portfolioGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <a href="iron-gym/index.html" target="_blank"
+         class="pf-card rev glass rounded-3xl overflow-hidden border border-white/5 block" data-cat="fitness">
+        <div class="h-44 bg-gradient-to-br from-orange-900/60 to-red-950/60 flex items-center justify-center relative">
+          <span class="text-7xl select-none">🏋️</span>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0D1420] via-transparent to-transparent"></div>
+          <span class="absolute top-3 left-3 text-[11px] font-bold bg-green-500/20 text-green-400 border border-green-500/30 px-3 py-1 rounded-full">● Activo</span>
+          <span class="absolute top-3 right-3 text-[11px] font-bold bg-white/10 text-white border border-white/20 px-3 py-1 rounded-full">Ver sitio →</span>
+        </div>
+        <div class="p-6">
+          <p class="text-green-400 text-xs font-semibold uppercase tracking-wider mb-1">Fitness</p>
+          <h3 class="text-white font-bold text-xl mb-2">Iron Gym Tijuana</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Landing page con disciplinas, membresías, precios y CTA directo a WhatsApp.</p>
+        </div>
+      </a>
+
+      <a href="tattoo-landing/index.html" target="_blank"
+         class="pf-card rev glass rounded-3xl overflow-hidden border border-white/5 block" data-cat="tattoo" style="transition-delay:.05s;">
+        <div class="h-44 bg-gradient-to-br from-red-950/70 to-zinc-950/80 flex items-center justify-center relative">
+          <span class="text-7xl select-none">🖋️</span>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0D1420] via-transparent to-transparent"></div>
+          <span class="absolute top-3 left-3 text-[11px] font-bold bg-green-500/20 text-green-400 border border-green-500/30 px-3 py-1 rounded-full">● Activo</span>
+          <span class="absolute top-3 right-3 text-[11px] font-bold bg-white/10 text-white border border-white/20 px-3 py-1 rounded-full">Ver sitio →</span>
+        </div>
+        <div class="p-6">
+          <p class="text-green-400 text-xs font-semibold uppercase tracking-wider mb-1">Tatuajes</p>
+          <h3 class="text-white font-bold text-xl mb-2">Underground Tattoo</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Landing premium con portafolio, historia del artista, servicios y agenda por WhatsApp.</p>
+        </div>
+      </a>
+
+      <a href="antrax-cerrajeria/index.html" target="_blank"
+         class="pf-card rev glass rounded-3xl overflow-hidden border border-white/5 block" data-cat="servicios" style="transition-delay:.1s;">
+        <div class="h-44 bg-gradient-to-br from-yellow-900/50 to-zinc-950/80 flex items-center justify-center relative">
+          <span class="text-7xl select-none">🔑</span>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0D1420] via-transparent to-transparent"></div>
+          <span class="absolute top-3 left-3 text-[11px] font-bold bg-green-500/20 text-green-400 border border-green-500/30 px-3 py-1 rounded-full">● Activo</span>
+          <span class="absolute top-3 right-3 text-[11px] font-bold bg-white/10 text-white border border-white/20 px-3 py-1 rounded-full">Ver sitio →</span>
+        </div>
+        <div class="p-6">
+          <p class="text-green-400 text-xs font-semibold uppercase tracking-wider mb-1">Servicios</p>
+          <h3 class="text-white font-bold text-xl mb-2">Antrax Cerrajería</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Landing de cerrajería con servicios, cobertura, proceso y CTA de emergencia 24/7.</p>
+        </div>
+      </a>
+
+      <a href="mi-tienda-telcel/index.html" target="_blank"
+         class="pf-card rev glass rounded-3xl overflow-hidden border border-white/5 block" data-cat="telcel" style="transition-delay:.15s;">
+        <div class="h-44 bg-gradient-to-br from-blue-900/60 to-cyan-950/70 flex items-center justify-center relative">
+          <span class="text-7xl select-none">📱</span>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0D1420] via-transparent to-transparent"></div>
+          <span class="absolute top-3 left-3 text-[11px] font-bold bg-green-500/20 text-green-400 border border-green-500/30 px-3 py-1 rounded-full">● Activo</span>
+          <span class="absolute top-3 right-3 text-[11px] font-bold bg-white/10 text-white border border-white/20 px-3 py-1 rounded-full">Ver sitio →</span>
+        </div>
+        <div class="p-6">
+          <p class="text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-1">Telcel · Retail</p>
+          <h3 class="text-white font-bold text-xl mb-2">Mi Tienda Telcel</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Landing con carrusel de equipos, galería del local, reparaciones y CTA a WhatsApp. Tijuana, B.C.</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- PROCESO -->
+<section id="proceso" class="py-28 relative">
+  <div class="absolute inset-0 grid-bg opacity-40 pointer-events-none"></div>
+  <div class="max-w-4xl mx-auto px-6 relative">
+    <div class="text-center mb-16 rev">
+      <p class="text-green-400 text-sm font-semibold tracking-widest uppercase mb-3">Cómo trabajamos</p>
+      <h2 class="text-4xl md:text-5xl font-black mb-5">
+        De la idea<br><span class="gt">al lanzamiento</span>
+      </h2>
+    </div>
+    <div class="relative">
+      <div class="absolute left-7 top-0 bottom-0 w-px bg-gradient-to-b from-green-500/50 via-blue-500/50 to-transparent hidden md:block"></div>
+      <div class="space-y-6">
+        <div class="rev glass rounded-3xl p-8 border border-white/5 flex gap-6 items-start" style="transition-delay:.0s">
+          <div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-green-500/15 border border-green-500/20 flex items-center justify-center">
+            <span class="text-xl font-black gt">01</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white mb-2">Conversamos sobre tu negocio</h3>
+            <p class="text-gray-400 leading-relaxed">Una llamada de 30 minutos para entender tu negocio, tus clientes y qué quieres lograr con tu presencia digital. Sin costo, sin compromiso.</p>
+          </div>
+        </div>
+        <div class="rev glass rounded-3xl p-8 border border-white/5 flex gap-6 items-start" style="transition-delay:.1s">
+          <div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-blue-500/15 border border-blue-500/20 flex items-center justify-center">
+            <span class="text-xl font-black gt">02</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white mb-2">Diseñamos tu propuesta</h3>
+            <p class="text-gray-400 leading-relaxed">Creamos el diseño visual de tu sitio basado en tu identidad y tu mercado. Tú apruebas antes de que escribamos una línea de código.</p>
+          </div>
+        </div>
+        <div class="rev glass rounded-3xl p-8 border border-white/5 flex gap-6 items-start" style="transition-delay:.2s">
+          <div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-green-500/15 border border-green-500/20 flex items-center justify-center">
+            <span class="text-xl font-black gt">03</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white mb-2">Desarrollamos y perfeccionamos</h3>
+            <p class="text-gray-400 leading-relaxed">Construimos tu sitio con atención al detalle. Revisiones incluidas hasta que quedes 100% satisfecho. Tú tienes el control en todo momento.</p>
+          </div>
+        </div>
+        <div class="rev glass rounded-3xl p-8 border border-white/5 flex gap-6 items-start" style="transition-delay:.3s">
+          <div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-blue-500/15 border border-blue-500/20 flex items-center justify-center">
+            <span class="text-xl font-black gt">04</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white mb-2">Lanzamos y te acompañamos</h3>
+            <p class="text-gray-400 leading-relaxed">Publicamos tu sitio, configuramos Google Analytics y te enseñamos a usar todo. No te dejamos solo después del lanzamiento.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- POR QUÉ NOSOTROS -->
+<section id="nosotros" class="py-28">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="rev gb-card glass p-12 md:p-16 relative overflow-hidden">
+      <div class="pointer-events-none absolute top-0 right-0 w-80 h-80 bg-green-500/6 rounded-full blur-3xl"></div>
+      <div class="pointer-events-none absolute bottom-0 left-0 w-60 h-60 bg-blue-500/6 rounded-full blur-3xl"></div>
+      <div class="relative grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-green-400 text-sm font-semibold tracking-widest uppercase mb-3">Por qué elegirnos</p>
+          <h2 class="text-4xl md:text-5xl font-black mb-6">
+            Somos de Tijuana,<br>
+            <span class="gt">entendemos tu mercado</span>
+          </h2>
+          <p class="text-gray-400 text-lg leading-relaxed mb-8">
+            No somos una agencia genérica. Somos especialistas en negocios locales de la frontera.
+            Conocemos tu competencia, tus clientes y cómo hacer que tu negocio destaque en el mundo digital.
+          </p>
+          <a href="https://wa.me/526641991538?text=Hola%2C%20quiero%20agendar%20una%20consulta%20gratuita"
+             target="_blank"
+             class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-400 text-black font-bold px-8 py-4 rounded-full text-lg transition-all hover:scale-105 shadow-xl shadow-green-500/25">
+            Agendar consulta gratuita
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="glass rounded-2xl p-6 border border-white/5 text-center">
+            <div class="text-4xl font-black gt mb-1 count-up" data-target="100" data-suffix="%">0%</div>
+            <p class="text-gray-400 text-sm">Satisfacción garantizada</p>
+          </div>
+          <div class="glass rounded-2xl p-6 border border-white/5 text-center">
+            <div class="text-4xl font-black gt mb-1">7–14</div>
+            <p class="text-gray-400 text-sm">Días de entrega</p>
+          </div>
+          <div class="glass rounded-2xl p-6 border border-white/5 text-center">
+            <div class="text-4xl font-black gt mb-1">24/7</div>
+            <p class="text-gray-400 text-sm">Soporte por WhatsApp</p>
+          </div>
+          <div class="glass rounded-2xl p-6 border border-white/5 text-center">
+            <div class="text-4xl font-black gt mb-1">∞</div>
+            <p class="text-gray-400 text-sm">Revisiones incluidas</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA FINAL -->
+<section id="contacto" class="py-28 relative overflow-hidden">
+  <div class="absolute inset-0 grid-bg opacity-40 pointer-events-none"></div>
+  <div class="pointer-events-none absolute inset-0 flex items-center justify-center">
+    <div class="w-[600px] h-[600px] bg-green-500/6 rounded-full blur-[120px]"></div>
+  </div>
+  <div class="max-w-4xl mx-auto px-6 text-center relative rev">
+    <p class="text-green-400 text-sm font-semibold tracking-widest uppercase mb-4">Empecemos</p>
+    <h2 class="text-5xl md:text-7xl font-black leading-tight mb-6">
+      ¿Listo para dejar<br>
+      <span class="gt">tu huella digital?</span>
+    </h2>
+    <p class="text-gray-400 text-xl max-w-2xl mx-auto mb-12">
+      Escríbenos por WhatsApp. La consulta inicial es 100% gratuita. Sin presión, sin compromisos.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="https://wa.me/526641991538?text=Hola%2C%20quiero%20información%20sobre%20sus%20servicios%20de%20diseño%20web"
+         target="_blank"
+         class="inline-flex items-center justify-center gap-3 bg-green-500 hover:bg-green-400 text-black font-bold px-10 py-5 rounded-full text-xl transition-all hover:scale-105 shadow-2xl shadow-green-500/30">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L.057 23.267a.5.5 0 00.609.657l5.538-1.453A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.887a9.874 9.874 0 01-5.031-1.381l-.361-.214-3.737.98.999-3.642-.235-.374A9.861 9.861 0 012.113 12C2.113 6.539 6.539 2.113 12 2.113S21.887 6.539 21.887 12 17.461 21.887 12 21.887z"/>
+        </svg>
+        Escríbenos por WhatsApp
+      </a>
+      <a href="mailto:hola@huelladigital.mx"
+         class="inline-flex items-center justify-center gap-3 glass border border-white/10 hover:border-green-500/40 font-semibold px-10 py-5 rounded-full text-xl transition-all hover:scale-105">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+        hola@huelladigital.mx
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="border-t border-white/5 py-14">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-3 gap-10 mb-10">
+      <div>
+        <img src="assets/logo.png" alt="Huella Digital" class="h-10 mb-4"
+             onerror="this.onerror=null;this.style.display='none'">
+        <p class="text-gray-500 text-sm leading-relaxed">
+          El internet trabajando para tu negocio.<br>
+          Presencia digital para negocios locales en Tijuana, B.C.
+        </p>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4">Servicios</h4>
+        <ul class="space-y-2 text-sm text-gray-500">
+          <li><a href="#servicios" class="hover:text-green-400 transition-colors">Sitio Web desde Cero</a></li>
+          <li><a href="#servicios" class="hover:text-green-400 transition-colors">Rediseño Web</a></li>
+          <li><a href="#servicios" class="hover:text-green-400 transition-colors">Auditoría Digital</a></li>
+          <li><a href="#servicios" class="hover:text-green-400 transition-colors">IA y Tecnología</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4">Contacto</h4>
+        <ul class="space-y-2 text-sm text-gray-500">
+          <li class="flex items-center gap-2"><span>📍</span> Tijuana, Baja California, México</li>
+          <li class="flex items-center gap-2"><span>💬</span> WhatsApp disponible</li>
+          <li class="flex items-center gap-2"><span>📧</span> hola@huelladigital.mx</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-gray-600">
+      <p>© 2026 Huella Digital. Todos los derechos reservados.</p>
+      <p>Hecho con 💚 en Tijuana, México</p>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('glass', window.scrollY > 60);
+    nav.classList.toggle('shadow-2xl', window.scrollY > 60);
+  }, { passive: true });
+
+  const ham = document.getElementById('ham');
+  const mob = document.getElementById('mob');
+  ham.addEventListener('click', () => mob.classList.toggle('hidden'));
+  mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mob.classList.add('hidden')));
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.rev').forEach(el => io.observe(el));
+
+  const allCards = document.querySelectorAll('#portfolioGrid [data-cat]');
+  function filterPortfolio(cat) {
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      const active = btn.dataset.filter === cat;
+      btn.className = active
+        ? 'filter-btn active-filter px-5 py-2 rounded-full text-sm font-semibold transition-all bg-green-500 text-black'
+        : 'filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all glass border border-white/10 text-gray-400 hover:border-green-500/30 hover:text-white';
+    });
+    allCards.forEach(card => {
+      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+    });
+  }
+  filterPortfolio('all');
+
+  (function() {
+    function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+    function animateCounter(el) {
+      const target   = parseInt(el.dataset.target, 10);
+      const suffix   = el.dataset.suffix || '';
+      const duration = target > 50 ? 1800 : 1200;
+      const start    = performance.now();
+      function tick(now) {
+        const elapsed  = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        el.textContent = Math.round(easeOut(progress) * target) + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { animateCounter(e.target); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.count-up').forEach(el => observer.observe(el));
+  })();
+
+  (function() {
+    const el = document.getElementById('scrambleText');
+    if (!el || window.innerWidth < 768) return;
+    const GLYPHS  = '!<>-_\\/[]{}—=+*^?#@$%';
+    const PHRASES = [
+      'Cotización gratis · sin compromiso',
+      'Entrega en 7–14 días',
+      'Soporte incluido por WhatsApp',
+      'Negocios locales en Tijuana',
+    ];
+    let queue = [], frame = 0, raf, counter = 0;
+    let resolve = () => {};
+    function scramble(newText) {
+      const oldText = el.textContent;
+      const len = Math.max(oldText.length, newText.length);
+      queue = [];
+      for (let i = 0; i < len; i++) {
+        queue.push({
+          from: oldText[i] || '', to: newText[i] || '',
+          start: Math.floor(Math.random() * 35),
+          end:   Math.floor(Math.random() * 35) + 35,
+          char: '',
+        });
+      }
+      cancelAnimationFrame(raf);
+      frame = 0;
+      return new Promise(res => { resolve = res; tick(); });
+    }
+    function tick() {
+      let out = '', done = 0;
+      for (let i = 0; i < queue.length; i++) {
+        const q = queue[i];
+        if (frame >= q.end) { done++; out += q.to; }
+        else if (frame >= q.start) {
+          if (!q.char || Math.random() < 0.28) q.char = GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+          out += `<span style="color:#4ade80;opacity:.7">${q.char}</span>`;
+        } else { out += q.from; }
+      }
+      el.innerHTML = out;
+      frame++;
+      if (done < queue.length) raf = requestAnimationFrame(tick);
+      else resolve();
+    }
+    function loop() {
+      scramble(PHRASES[counter]).then(() => setTimeout(loop, 2800));
+      counter = (counter + 1) % PHRASES.length;
+    }
+    setTimeout(loop, 1200);
+  })();
+</script>
+
+</body>
+</html>
