@@ -14,5 +14,6 @@ export interface Negocio {
   fechaCreacion: string;
   estado: EstadoProspecto;
   analisis?: string;
+  datosReales?: string;
   notas?: string;
 }

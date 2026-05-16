@@ -2,15 +2,26 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { getApiKey, saveNegocio } from "@/lib/storage";
-import { Building2, MapPin, Briefcase, Loader2, AlertTriangle, ArrowLeft } from "lucide-react";
+import {
+  Building2,
+  MapPin,
+  Briefcase,
+  Loader2,
+  AlertTriangle,
+  ArrowLeft,
+  ClipboardList,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
 import Link from "next/link";
 
 export default function NuevoAnalisis() {
   const router = useRouter();
-  const [form, setForm] = useState({ nombre: "", direccion: "", giro: "" });
+  const [form, setForm] = useState({ nombre: "", direccion: "", giro: "", datosReales: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [progreso, setProgreso] = useState("");
+  const [mostrarDatos, setMostrarDatos] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -26,7 +37,7 @@ export default function NuevoAnalisis() {
 
     setLoading(true);
     setError("");
-    setProgreso("Investigando el negocio...");
+    setProgreso("Procesando datos del negocio...");
 
     try {
       const res = await fetch("/api/analizar", {
@@ -60,6 +71,7 @@ export default function NuevoAnalisis() {
         direccion: form.direccion,
         ciudad: "",
         giro: form.giro,
+        datosReales: form.datosReales,
         fechaCreacion: new Date().toISOString(),
         estado: "nuevo",
         analisis,
@@ -86,7 +98,7 @@ export default function NuevoAnalisis() {
       <div className="bg-white rounded-2xl border border-gray-200 p-8">
         <h1 className="text-xl font-bold text-gray-900 mb-1">Nuevo análisis</h1>
         <p className="text-gray-500 text-sm mb-8">
-          Ingresa el nombre y la dirección del negocio. La IA hará el resto.
+          Ingresa el nombre y la dirección. Si tienes datos reales del negocio, agrégalos para un análisis más preciso.
         </p>
 
         {error && (
@@ -134,7 +146,7 @@ export default function NuevoAnalisis() {
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1.5">
               Giro del negocio{" "}
-              <span className="text-gray-400 font-normal">(opcional, mejora el análisis)</span>
+              <span className="text-gray-400 font-normal">(opcional)</span>
             </label>
             <div className="relative">
               <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -146,6 +158,50 @@ export default function NuevoAnalisis() {
                 className="w-full pl-9 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
               />
             </div>
+          </div>
+
+          {/* Datos reales */}
+          <div className="border border-gray-200 rounded-xl overflow-hidden">
+            <button
+              type="button"
+              onClick={() => setMostrarDatos(!mostrarDatos)}
+              className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 hover:bg-gray-100 transition-colors text-sm"
+            >
+              <div className="flex items-center gap-2 font-medium text-gray-700">
+                <ClipboardList className="w-4 h-4 text-indigo-500" />
+                Datos reales del negocio
+                <span className="text-xs text-green-600 font-semibold bg-green-50 px-2 py-0.5 rounded-full">
+                  Mejora la precisión
+                </span>
+              </div>
+              {mostrarDatos ? (
+                <ChevronUp className="w-4 h-4 text-gray-400" />
+              ) : (
+                <ChevronDown className="w-4 h-4 text-gray-400" />
+              )}
+            </button>
+
+            {mostrarDatos && (
+              <div className="p-4 space-y-3">
+                <p className="text-xs text-gray-500">
+                  Agrega lo que ya sabes del negocio. La IA usará estos datos como verdad absoluta y no los contradirá.
+                </p>
+                <textarea
+                  value={form.datosReales}
+                  onChange={(e) => setForm({ ...form, datosReales: e.target.value })}
+                  placeholder={`Ejemplos:
+- Google Maps: 3.2 estrellas, 87 reseñas
+- Tiene fotos en Google: sí, aprox. 15 fotos (viejas)
+- Sitio web: sí, básico en ueniweb
+- Facebook: activo, ~500 seguidores
+- Instagram: no detectado
+- WhatsApp: sí, número visible
+- Horario: Lun-Vie 10:30-7pm, Sab-Dom 10-4pm`}
+                  className="w-full border border-gray-200 rounded-lg p-3 text-sm text-gray-700 resize-none focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  rows={7}
+                />
+              </div>
+            )}
           </div>
 
           <button

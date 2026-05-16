@@ -1,9 +1,20 @@
-export function buildPrompt(nombre: string, direccion: string, giro?: string): string {
+export function buildPrompt(
+  nombre: string,
+  direccion: string,
+  giro?: string,
+  datosReales?: string
+): string {
+  const seccionDatos = datosReales?.trim()
+    ? `\nDAOS REALES VERIFICADOS DEL NEGOCIO (úsalos como verdad absoluta, no contradigas estos datos):
+${datosReales}
+`
+    : "";
+
   return `Actúa como un estratega senior de inteligencia comercial local especializado en negocios físicos, comportamiento del consumidor, demanda local y generación de leads.
 
 Tu trabajo es detectar oportunidades reales de crecimiento, tráfico perdido, problemas de posicionamiento y oportunidades comerciales accionables.
 
-Analiza el negocio usando la información que conoces sobre el tipo de negocio, la zona, la competencia típica y el comportamiento del consumidor local en México.
+IMPORTANTE: Si se proporcionan datos reales verificados del negocio, úsalos como verdad absoluta en todo el análisis. No los contradigas ni los ignores. Basa tus conclusiones en esos datos reales.
 
 Usa lenguaje claro, profesional y directo. NO des respuestas genéricas. Habla como consultor de crecimiento comercial local. Sé brutalmente honesto y específico para ESTE negocio en ESTA ciudad.
 
@@ -11,7 +22,7 @@ DATOS DEL NEGOCIO:
 Nombre: ${nombre}
 Dirección: ${direccion}
 ${giro ? `Giro: ${giro}` : ""}
-
+${seccionDatos}
 Genera el análisis con esta estructura EXACTA en Markdown:
 
 # 1. RESUMEN EJECUTIVO
@@ -24,7 +35,7 @@ Rango de edad, sexo, comportamiento de compra, nivel socioeconómico, necesidade
 Cómo busca la gente este servicio, intención de compra, búsquedas comunes (incluye ejemplos reales), comportamiento móvil, temporadas fuertes y nivel de urgencia.
 
 # 4. ANÁLISIS DE PRESENCIA DIGITAL
-Google Maps, reseñas, branding, contenido, redes sociales, WhatsApp, sitio web, tráfico desperdiciado, problemas de conversión y oportunidades invisibles.
+Google Maps, reseñas, branding, contenido, redes sociales, WhatsApp, sitio web, tráfico desperdiciado, problemas de conversión y oportunidades invisibles. Usa los datos reales proporcionados.
 
 # 5. ANÁLISIS DE COMPETENCIA
 Fortalezas y debilidades de competidores típicos en este giro y ciudad, qué están haciendo bien, qué oportunidades dejan libres y cómo diferenciarse rápidamente.
@@ -60,4 +71,34 @@ Detecta 3-5 oportunidades comerciales que el dueño probablemente no está viend
 Qué harías si fueras dueño, dónde está el dinero más desaprovechado, cuál es la estrategia más inteligente y qué ventaja competitiva puede construir.
 
 Sé extremadamente específico para este negocio. No uses frases genéricas de marketing. Piensa como alguien que quiere aumentar ventas reales.`;
+}
+
+export function buildResumenPrompt(
+  nombre: string,
+  direccion: string,
+  analisis: string,
+  datosReales?: string
+): string {
+  return `Eres un experto en ventas B2B para agencias de marketing digital que venden servicios a negocios locales.
+
+Basándote en el siguiente análisis estratégico completo del negocio "${nombre}" ubicado en ${direccion}, genera un RESUMEN GANCHO corto y poderoso.
+
+Este resumen será enviado al dueño del negocio por WhatsApp para despertar su interés y hacer que quiera una reunión.
+
+REGLAS ESTRICTAS:
+- Máximo 250 palabras
+- Usa NÚMEROS REALES del análisis (estrellas, reseñas, porcentajes estimados, etc.)
+- Empieza con el problema más crítico y doloroso
+- Sé directo y honesto, no vendedor
+- Termina con UNA pregunta que invite a responder
+- No menciones tu agencia ni tus servicios todavía
+- Tono: consultor honesto, no vendedor de marketing
+- Formato: texto plano listo para WhatsApp, sin Markdown, sin asteriscos
+
+${datosReales ? `DATOS REALES DEL NEGOCIO:\n${datosReales}\n` : ""}
+
+ANÁLISIS COMPLETO:
+${analisis.slice(0, 4000)}
+
+Genera SOLO el mensaje WhatsApp. Nada más.`;
 }

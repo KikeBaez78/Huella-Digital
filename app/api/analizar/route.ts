@@ -3,7 +3,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { buildPrompt } from "@/lib/prompt";
 
 export async function POST(req: NextRequest) {
-  const { nombre, direccion, giro, apiKey } = await req.json();
+  const { nombre, direccion, giro, datosReales, apiKey } = await req.json();
 
   if (!apiKey) {
     return new Response(JSON.stringify({ error: "Falta la API Key de Anthropic." }), {
@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
   }
 
   const client = new Anthropic({ apiKey });
-  const prompt = buildPrompt(nombre, direccion, giro);
+  const prompt = buildPrompt(nombre, direccion, giro, datosReales);
 
   const stream = await client.messages.stream({
     model: "claude-sonnet-4-6",
